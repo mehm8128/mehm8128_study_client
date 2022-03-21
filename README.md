@@ -1,5 +1,6 @@
 # mehm8128_study_client
 勉強記録管理用アプリのクライアントです(制作中)。
+
 サーバー：https://github.com/mehm8128/mehm8128_study_server
 
 目標の宣言や、勉強時間・ページ数の記録ができます。
