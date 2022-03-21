@@ -1,5 +1,8 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 
+import TimeLine from '../components/container/TimeLineContainer'
+import ToDoList from '../components/container/ToDoListContainer'
+
 import type { NextPage } from "next"
 const Index: NextPage = () => {
 	return (
@@ -14,9 +17,11 @@ const Index: NextPage = () => {
 					</Tab>
 				</TabList>
 				<TabPanels>
-					<TabPanel></TabPanel>
 					<TabPanel>
-						<p>two!</p>
+						<TimeLine />
+					</TabPanel>
+					<TabPanel>
+						<ToDoList />
 					</TabPanel>
 				</TabPanels>
 			</Tabs>

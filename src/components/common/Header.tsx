@@ -1,4 +1,4 @@
-import { Button, Flex, Heading } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 
@@ -13,7 +13,12 @@ const Header: NextPage = () => {
 				px="4"
 			>
 				<Heading>タイトル</Heading>
-				<Button bg="gray.100">ユーザー名</Button>
+				<Box>
+					<Button bg="gray.400" mr={4}>
+						ログイン画面へ
+					</Button>
+					<Button bg="gray.400">ユーザー名</Button>
+				</Box>
 			</Flex>
 		</>
 	)

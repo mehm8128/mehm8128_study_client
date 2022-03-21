@@ -1,11 +1,11 @@
-import { Heading } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 
 const ToDoList: NextPage = () => {
 	return (
 		<>
-			<Heading>todolist</Heading>
+			<Box w="60%">ToDos</Box>
 		</>
 	)
 }

@@ -10,7 +10,7 @@ const LoginPage: NextPage = () => {
 			<Heading textAlign="center" mt={4}>
 				タイトル
 			</Heading>
-			<Flex justifyContent="space-around" h={600}>
+			<Flex justifyContent="space-around" h={500} mt={4}>
 				<SignUp />
 				<Login />
 			</Flex>

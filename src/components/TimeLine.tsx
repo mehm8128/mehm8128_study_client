@@ -1,11 +1,10 @@
-import { Heading } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
-
 const TimeLine: NextPage = () => {
 	return (
 		<>
-			<Heading>timeline</Heading>
+			<Box w="60%">タイムライン</Box>
 		</>
 	)
 }
