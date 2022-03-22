@@ -4,6 +4,7 @@ import GoalSettingForm from '../GoalSettingForm'
 import ToDoList from '../ToDoList'
 
 import type { NextPage } from "next"
+
 const ToDoListContainer: NextPage = () => {
 	return (
 		<>

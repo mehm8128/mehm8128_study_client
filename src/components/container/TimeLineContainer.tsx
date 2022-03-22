@@ -4,6 +4,7 @@ import RecordForm from '../RecordForm'
 import TimeLine from '../TimeLine'
 
 import type { NextPage } from "next"
+
 const TimeLineContainer: NextPage = () => {
 	return (
 		<>

@@ -4,6 +4,7 @@ import TimeLine from '../components/container/TimeLineContainer'
 import ToDoList from '../components/container/ToDoListContainer'
 
 import type { NextPage } from "next"
+
 const Index: NextPage = () => {
 	return (
 		<>

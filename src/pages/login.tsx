@@ -4,6 +4,7 @@ import Login from '../components/login/Login'
 import SignUp from '../components/login/SignUp'
 
 import type { NextPage } from "next"
+
 const LoginPage: NextPage = () => {
 	return (
 		<>

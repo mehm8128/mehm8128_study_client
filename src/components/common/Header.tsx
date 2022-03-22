@@ -1,7 +1,8 @@
 import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 
-import type { NextPage } from "next"
+import LinkComponent from './LinkComponent'
 
+import type { NextPage } from "next"
 const Header: NextPage = () => {
 	return (
 		<>
@@ -12,12 +13,16 @@ const Header: NextPage = () => {
 				alignItems="center"
 				px="4"
 			>
-				<Heading>タイトル</Heading>
+				<Heading>
+					<LinkComponent href="/">タイトル</LinkComponent>
+				</Heading>
 				<Box>
 					<Button bg="gray.400" mr={4}>
-						ログイン画面へ
+						<LinkComponent href="/login">ログイン画面へ</LinkComponent>
 					</Button>
-					<Button bg="gray.400">ユーザー名</Button>
+					<Button bg="gray.400">
+						<LinkComponent href="/user/me">ユーザー名</LinkComponent>
+					</Button>
 				</Box>
 			</Flex>
 		</>
