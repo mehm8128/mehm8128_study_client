@@ -14,7 +14,7 @@ const Index: NextPage = () => {
 						タイムライン
 					</Tab>
 					<Tab w="40%" fontSize={20}>
-						ToDo
+						目標
 					</Tab>
 				</TabList>
 				<TabPanels>

@@ -9,8 +9,8 @@ const GoalListContainer: NextPage = () => {
 	return (
 		<>
 			<Flex justifyContent="space-around">
-				<GoalList />
-				<GoalSettingForm />
+				<GoalList w="60%" />
+				<GoalSettingForm w="30%" />
 			</Flex>
 		</>
 	)

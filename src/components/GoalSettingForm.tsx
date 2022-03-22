@@ -1,11 +1,11 @@
-import { Box, Button, Flex, Heading, Input } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Input } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 
-const GoalSettingForm: NextPage = () => {
+const GoalSettingForm: NextPage<BoxProps> = (props) => {
 	return (
 		<>
-			<Box borderWidth={2} p={8} w="30%" h={400}>
+			<Box borderWidth={2} p={8} h={400} {...props}>
 				<Heading>目標の設定</Heading>
 				<Flex flexDirection="column" justifyContent="space-around" h="80%">
 					<Input placeholder="タイトル"></Input>

@@ -1,11 +1,11 @@
-import { Box, Button, Flex, Heading, Input } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Input } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 
-const RecordForm: NextPage = () => {
+const RecordForm: NextPage<BoxProps> = (props) => {
 	return (
 		<>
-			<Box borderWidth={2} p={8} w="30%" h={400}>
+			<Box borderWidth={2} p={8} h={400} {...props}>
 				<Heading>勉強の記録</Heading>
 				<Flex flexDirection="column" justifyContent="space-around" h="80%">
 					<Input placeholder="タイトル"></Input>

@@ -9,8 +9,8 @@ const TimeLineContainer: NextPage = () => {
 	return (
 		<>
 			<Flex justifyContent="space-around">
-				<TimeLine />
-				<RecordForm />
+				<TimeLine w="60%" />
+				<RecordForm w="30%" />
 			</Flex>
 		</>
 	)

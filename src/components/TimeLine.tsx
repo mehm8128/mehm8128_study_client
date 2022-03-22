@@ -1,14 +1,14 @@
-import { Box, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
 
 import { records } from '../mock/records'
 import Record from './Record'
 
 import type { NextPage } from "next"
 
-const TimeLine: NextPage = () => {
+const TimeLine: NextPage<BoxProps> = (props) => {
 	return (
 		<>
-			<Box w="60%">
+			<Box {...props}>
 				<UnorderedList listStyleType="none">
 					{records.map((record) => (
 						<ListItem key={record.id} mb={4}>

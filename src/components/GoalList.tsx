@@ -1,14 +1,14 @@
-import { Box, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
 
 import { goals } from '../mock/goals'
 import Goal from './Goal'
 
 import type { NextPage } from "next"
 
-const GoalList: NextPage = () => {
+const GoalList: NextPage<BoxProps> = (props) => {
 	return (
 		<>
-			<Box w="60%">
+			<Box {...props}>
 				<UnorderedList listStyleType="none">
 					{goals.map((goal) => (
 						<ListItem key={goal.id} mb={4}>
