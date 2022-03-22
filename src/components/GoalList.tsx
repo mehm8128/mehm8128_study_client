@@ -1,18 +1,18 @@
 import { Box, ListItem, UnorderedList } from '@chakra-ui/react'
 
-import { records } from '../mock/records'
-import Record from './Record'
+import { goals } from '../mock/goals'
+import Goal from './Goal'
 
 import type { NextPage } from "next"
 
-const TimeLine: NextPage = () => {
+const GoalList: NextPage = () => {
 	return (
 		<>
 			<Box w="60%">
 				<UnorderedList listStyleType="none">
-					{records.map((record) => (
-						<ListItem key={record.id} mb={4}>
-							<Record record={record} />
+					{goals.map((goal) => (
+						<ListItem key={goal.id} mb={4}>
+							<Goal goal={goal} />
 						</ListItem>
 					))}
 				</UnorderedList>
@@ -21,4 +21,4 @@ const TimeLine: NextPage = () => {
 	)
 }
 
-export default TimeLine
+export default GoalList

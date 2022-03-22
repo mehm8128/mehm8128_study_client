@@ -17,12 +17,14 @@ const Header: NextPage = () => {
 					<LinkComponent href="/">タイトル</LinkComponent>
 				</Heading>
 				<Box>
-					<Button bg="gray.400" mr={4}>
-						<LinkComponent href="/login">ログイン画面へ</LinkComponent>
-					</Button>
-					<Button bg="gray.400">
-						<LinkComponent href="/user/me">ユーザー名</LinkComponent>
-					</Button>
+					<LinkComponent href="/login">
+						<Button bg="gray.400" mr={4}>
+							ログイン画面へ
+						</Button>
+					</LinkComponent>
+					<LinkComponent href="/user/me">
+						<Button bg="gray.400">ユーザー名</Button>
+					</LinkComponent>
 				</Box>
 			</Flex>
 		</>

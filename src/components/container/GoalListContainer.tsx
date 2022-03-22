@@ -1,19 +1,19 @@
 import { Flex } from '@chakra-ui/react'
 
+import GoalList from '../GoalList'
 import GoalSettingForm from '../GoalSettingForm'
-import ToDoList from '../ToDoList'
 
 import type { NextPage } from "next"
 
-const ToDoListContainer: NextPage = () => {
+const GoalListContainer: NextPage = () => {
 	return (
 		<>
 			<Flex justifyContent="space-around">
-				<ToDoList />
+				<GoalList />
 				<GoalSettingForm />
 			</Flex>
 		</>
 	)
 }
 
-export default ToDoListContainer
+export default GoalListContainer

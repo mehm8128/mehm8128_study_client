@@ -1,8 +1,10 @@
-export const records = [
+import { Record } from '../types/Record'
+
+export const records: Record[] = [
 	{
 		id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
 		title: "シス単",
-		pege: 4,
+		page: 4,
 		time: 45,
 		comment: "疲れた",
 		favorites: [
@@ -21,7 +23,7 @@ export const records = [
 	{
 		id: "3fa85f64-5717-4562-b3fc-2c963f66afa7",
 		title: "鉄壁",
-		pege: 8,
+		page: 8,
 		time: 90,
 		comment: "あああ",
 		favorites: [
@@ -46,7 +48,7 @@ export const records = [
 	{
 		id: "3fa85f64-5717-4562-b3fc-2c963f66afa8",
 		title: "ターゲット",
-		pege: 0,
+		page: 0,
 		time: 10,
 		comment: "いいい",
 		favorites: [

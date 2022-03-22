@@ -12,9 +12,7 @@ type Props = {
 const LinkComponent: NextPage<Props> = (props) => {
 	return (
 		<NextLink href={props.href} passHref>
-			<Link>
-				<a>{props.children}</a>
-			</Link>
+			<Link>{props.children}</Link>
 		</NextLink>
 	)
 }

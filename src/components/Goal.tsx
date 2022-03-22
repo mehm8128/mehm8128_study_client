@@ -1,37 +1,35 @@
 import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
 
 import image from '../assets/mehm8128.png'
-import { Record } from '../types/Record'
+import { Goal } from '../types/Goal'
 
 import type { NextPage } from "next"
 type Props = {
-	record: Record
+	goal: Goal
 }
-const Record: NextPage<Props> = (props) => {
+const Goal: NextPage<Props> = (props) => {
 	return (
 		<>
 			<Box borderWidth={2} p={2}>
 				<Flex justifyContent="space-between">
 					<Center>
 						<Avatar name="aaa" src={image.src} mr={4}></Avatar>
-						<Text>{props.record.createdBy}</Text>
+						<Text>{props.goal.createdBy}</Text>
 					</Center>
-					<Text>{props.record.createdAt}</Text>
+					<Text>{props.goal.createdAt}</Text>
 				</Flex>
 				<Box ml={12}>
-					<Text>{props.record.title}</Text>
-					<Text>
-						{props.record.time}分、{props.record.page}ページ勉強しました！
-					</Text>
-					<Text>{props.record.comment}</Text>
+					<Text>目標を設定しました！</Text>
+					<Text>{props.goal.title}</Text>
+					<Text>{props.goal.comment}</Text>
 				</Box>
 				<Center>
 					<Button>いいね！</Button>
-					<Text>{props.record.favoriteNum}</Text>
+					<Text>{props.goal.favoriteNum}</Text>
 				</Center>
 			</Box>
 		</>
 	)
 }
 
-export default Record
+export default Goal
