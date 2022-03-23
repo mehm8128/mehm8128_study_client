@@ -1,3 +1,5 @@
+import { dateFormatter } from 'src/utils/dateFormatter'
+
 import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
 
 import image from '../assets/mehm8128.png'
@@ -16,7 +18,7 @@ const Record: NextPage<Props> = (props) => {
 						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
 						<Text>{props.record.createdBy}</Text>
 					</Center>
-					<Text>{props.record.createdAt}</Text>
+					<Text>{dateFormatter(props.record.createdAt)}</Text>
 				</Flex>
 				<Box ml={12}>
 					<Text>{props.record.title}</Text>
