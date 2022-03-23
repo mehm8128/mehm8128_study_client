@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import GoalList from 'src/components/GoalList'
 import TimeLine from 'src/components/TimeLine'
 import UserIntro from 'src/components/UserIntro'
@@ -9,7 +10,14 @@ import type { NextPage } from "next"
 
 const User: NextPage = () => {
 	const router = useRouter()
-	const userId = router.query.toString()
+	const [userId, setUserId] = useState<string>("")
+
+	useEffect(() => {
+		if (!router.isReady) {
+			return
+		}
+		setUserId(router.query.userId as string)
+	}, [router.query])
 	return (
 		<>
 			<Box h="hull">

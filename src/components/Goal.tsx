@@ -1,3 +1,5 @@
+import { users } from 'src/mock/users'
+import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
 
 import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
@@ -6,6 +8,7 @@ import image from '../assets/mehm8128.png'
 import { Goal } from '../types/Goal'
 
 import type { NextPage } from "next"
+
 type Props = {
 	goal: Goal
 }
@@ -16,7 +19,9 @@ const Goal: NextPage<Props> = (props) => {
 				<Flex justifyContent="space-between">
 					<Center>
 						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
-						<Text>{props.goal.createdBy}</Text>
+						<Text fontSize={20}>
+							{createdByToString(props.goal.createdBy, users)}
+						</Text>
 					</Center>
 					<Text>{dateFormatter(props.goal.createdAt)}</Text>
 				</Flex>
