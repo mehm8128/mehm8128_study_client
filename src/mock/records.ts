@@ -76,4 +76,23 @@ export const records: Record[] = [
 		createdAt: "2022-03-22T00:54:17.863Z",
 		updatedAt: "2022-03-22T00:54:17.863Z",
 	},
+	{
+		id: "3fa85f64-5717-4562-b3fc-2c963f67afa8",
+		title: "ハイ完",
+		page: 2,
+		time: 5,
+		comment: "おおお",
+		favorites: [
+			{
+				id: "3fa85f64-5717-4563-b3fc-2c963f66afa6",
+				createdBy: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+				createdAt: "2022-03-22T00:51:17.863Z",
+				recordId: "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+			},
+		],
+		favoriteNum: 1,
+		createdBy: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+		createdAt: "2022-03-22T00:54:17.863Z",
+		updatedAt: "2022-03-22T00:54:17.863Z",
+	},
 ]

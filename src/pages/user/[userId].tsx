@@ -12,17 +12,23 @@ const User: NextPage = () => {
 	const userId = router.query.toString()
 	return (
 		<>
-			<UserIntro userId={userId} />
-			<Flex>
-				<Box width="50%">
-					<Heading textAlign="center">勉強の記録</Heading>
-					<TimeLine />
-				</Box>
-				<Box width="50%">
-					<Heading textAlign="center">目標</Heading>
-					<GoalList />
-				</Box>
-			</Flex>
+			<Box h="hull">
+				<UserIntro userId={userId} />
+				<Flex>
+					<Box width="50%" h={500}>
+						<Heading textAlign="center" mb={4}>
+							勉強の記録
+						</Heading>
+						<TimeLine overflowY="scroll" h="full" p={2} />
+					</Box>
+					<Box width="50%" h={500}>
+						<Heading textAlign="center" mb={4}>
+							目標
+						</Heading>
+						<GoalList overflowY="scroll" h="full" p={2} />
+					</Box>
+				</Flex>
+			</Box>
 		</>
 	)
 }

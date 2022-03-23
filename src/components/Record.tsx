@@ -13,7 +13,7 @@ const Record: NextPage<Props> = (props) => {
 			<Box borderWidth={2} p={2}>
 				<Flex justifyContent="space-between">
 					<Center>
-						<Avatar name="aaa" src={image.src} mr={4}></Avatar>
+						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
 						<Text>{props.record.createdBy}</Text>
 					</Center>
 					<Text>{props.record.createdAt}</Text>
@@ -26,8 +26,7 @@ const Record: NextPage<Props> = (props) => {
 					<Text>{props.record.comment}</Text>
 				</Box>
 				<Center>
-					<Button>いいね！</Button>
-					<Text>{props.record.favoriteNum}</Text>
+					<Button>いいね！ {props.record.favoriteNum}</Button>
 				</Center>
 			</Box>
 		</>

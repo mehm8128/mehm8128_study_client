@@ -12,14 +12,16 @@ type Props = {
 const UserIntro: NextPage<Props> = (props) => {
 	return (
 		<>
-			<Box>
+			<Box p={4}>
 				<Flex>
 					<Center>
-						<Avatar name="aaa" src={image.src} mr={4}></Avatar>
-						<Text>{"name"}</Text>
+						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
+						<Text fontSize={20}>{"name"}</Text>
 					</Center>
 				</Flex>
-				<Text>自己紹介</Text>
+				<Box height={20} py={4} px={4}>
+					<Text>自己紹介</Text>
+				</Box>
 			</Box>
 		</>
 	)

@@ -6,7 +6,9 @@ const SignUp: NextPage = () => {
 	return (
 		<>
 			<Box borderWidth={4} borderColor="gray.200" w="40%">
-				<Heading textAlign="center">新規登録</Heading>
+				<Heading textAlign="center" mt={2}>
+					新規登録
+				</Heading>
 				<Flex flexDirection="column" justifyContent="space-around" h="90%">
 					<Input placeholder="ユーザー名"></Input>
 					<Input placeholder="パスワード"></Input>

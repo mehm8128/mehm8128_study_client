@@ -13,7 +13,7 @@ const Goal: NextPage<Props> = (props) => {
 			<Box borderWidth={2} p={2}>
 				<Flex justifyContent="space-between">
 					<Center>
-						<Avatar name="aaa" src={image.src} mr={4}></Avatar>
+						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
 						<Text>{props.goal.createdBy}</Text>
 					</Center>
 					<Text>{props.goal.createdAt}</Text>
@@ -24,8 +24,7 @@ const Goal: NextPage<Props> = (props) => {
 					<Text>{props.goal.comment}</Text>
 				</Box>
 				<Center>
-					<Button>いいね！</Button>
-					<Text>{props.goal.favoriteNum}</Text>
+					<Button>いいね！ {props.goal.favoriteNum}</Button>
 				</Center>
 			</Box>
 		</>
