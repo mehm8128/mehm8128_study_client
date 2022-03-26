@@ -1,6 +1,6 @@
-import { Goal } from '../types/Goal'
+import { GoalType } from '../types/Goal'
 
-export const goals: Goal[] = [
+export const goals: GoalType[] = [
 	{
 		id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
 		title: "シス単",
