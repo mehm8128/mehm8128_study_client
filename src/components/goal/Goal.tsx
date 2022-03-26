@@ -20,21 +20,29 @@ const Goal: NextPage<Props> = (props) => {
 	const { me, getGoals, users } = useContext(UserContext)
 	function handleComplete() {
 		axios
-			.put("http://localhost:8000/api/goals/" + props.goal.id, {
-				title: props.goal.title,
-				comment: props.goal.comment,
-				goalDate: props.goal.goalDate,
-				isCompleted: true,
-				createdBy: me.id,
-			})
+			.put(
+				"https://mehm8128-study-server.herokuapp.com/api/goals/" +
+					props.goal.id,
+				{
+					title: props.goal.title,
+					comment: props.goal.comment,
+					goalDate: props.goal.goalDate,
+					isCompleted: true,
+					createdBy: me.id,
+				}
+			)
 			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
 	}
 	function handleFavorite() {
 		axios
-			.put("http://localhost:8000/api/goals/favorite/" + props.goal.id, {
-				createdBy: me.id,
-			})
+			.put(
+				"https://mehm8128-study-server.herokuapp.com/api/goals/favorite/" +
+					props.goal.id,
+				{
+					createdBy: me.id,
+				}
+			)
 			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
 	}

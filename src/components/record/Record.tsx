@@ -18,9 +18,13 @@ const Record: NextPage<Props> = (props) => {
 	const { me, getRecords, users } = useContext(UserContext)
 	function handleFavorite() {
 		axios
-			.put("http://localhost:8000/api/records/favorite/" + props.record.id, {
-				createdBy: me.id,
-			})
+			.put(
+				"https://mehm8128-study-server.herokuapp.com/api/records/favorite/" +
+					props.record.id,
+				{
+					createdBy: me.id,
+				}
+			)
 			.then(() => getRecords())
 			.catch((err) => alert(err))
 	}

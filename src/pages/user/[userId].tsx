@@ -28,7 +28,7 @@ const User: NextPage = () => {
 		}
 		getUsers()
 		axios
-			.get("http://localhost:8000/api/users/" + id)
+			.get("https://mehm8128-study-server.herokuapp.com/api/users/" + id)
 			.then((res) => setUser(res.data))
 			.catch((err) => alert(err))
 	}, [router.query])

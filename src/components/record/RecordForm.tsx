@@ -15,7 +15,7 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 	function handleSubmit() {
 		if (title !== "" && /[0-9]+/.test(page) && /[0-9]+/.test(time)) {
 			axios
-				.post("http://localhost:8000/api/records", {
+				.post("https://mehm8128-study-server.herokuapp.com/api/records", {
 					title: title,
 					page: Number(page),
 					time: Number(time),

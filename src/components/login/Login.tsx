@@ -14,7 +14,7 @@ const Login: NextPage = () => {
 	const [password, setPassword] = useState("")
 	function handleLogin() {
 		axios
-			.post("http://localhost:8000/api/users/login", {
+			.post("https://mehm8128-study-server.herokuapp.com/api/users/login", {
 				name: userName,
 				password: password,
 			})
