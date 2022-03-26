@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Input } from '@chakra-ui/react'
 
-import RecordForm from '../RecordForm'
-import TimeLine from '../TimeLine'
+import RecordForm from '../record/RecordForm'
+import TimeLine from '../record/TimeLine'
 
 import type { NextPage } from "next"
 

@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 
-import GoalList from '../GoalList'
-import GoalSettingForm from '../GoalSettingForm'
+import GoalList from '../goal/GoalList'
+import GoalSettingForm from '../goal/GoalSettingForm'
 
 import type { NextPage } from "next"
 

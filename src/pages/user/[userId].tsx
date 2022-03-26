@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import GoalList from 'src/components/GoalList'
-import TimeLine from 'src/components/TimeLine'
+import GoalList from 'src/components/goal/GoalList'
+import TimeLine from 'src/components/record/TimeLine'
 import UserIntro from 'src/components/UserIntro'
 
 import { Box, Flex, Heading } from '@chakra-ui/react'

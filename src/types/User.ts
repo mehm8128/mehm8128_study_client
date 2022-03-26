@@ -5,3 +5,9 @@ export type User = {
 	createdAt: string
 	updatedAt: string
 }
+
+export type Me = {
+	id: string
+	name: string
+	auth: boolean
+}

@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { UserContext } from 'src/components/UserProvider'
 import { users } from 'src/mock/users'
 import { createdByToString } from 'src/utils/createdByToString'
 
@@ -7,26 +8,25 @@ import { Avatar, Box, Center, Flex, Text } from '@chakra-ui/react'
 import image from '../assets/mehm8128.png'
 
 import type { NextPage } from "next"
-
 type Props = {
 	userId: string
 }
 const UserIntro: NextPage<Props> = (props) => {
-	const me = "mehm8128" //get meで取ってくる
+	const { user } = useContext(UserContext)
 	return (
 		<>
 			<Box p={4}>
 				<Flex>
 					<Center>
 						<Avatar
-							name="aaa"
-							src={props.userId === "mehm8128" ? image.src : ""}
+							name={user.name}
+							src={props.userId === "me" ? image.src : ""}
 							mr={2}
 						></Avatar>
 						<Text fontSize={20}>
 							{props.userId !== "me"
 								? createdByToString(props.userId, users)
-								: me}
+								: user.name}
 						</Text>
 					</Center>
 				</Flex>
