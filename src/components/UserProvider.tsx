@@ -34,7 +34,6 @@ export const UserProvider: React.FC = ({ children }) => {
 		setMe({ id: "", name: "", auth: false })
 	}
 	const getRecords = async (id?: string) => {
-		console.log(id)
 		let userId = id ? "/user/" + id : ""
 		await axios
 			.get("https://mehm8128-study-server.herokuapp.com/api/records" + userId)
@@ -43,7 +42,6 @@ export const UserProvider: React.FC = ({ children }) => {
 			})
 	}
 	const getGoals = async (id?: string) => {
-		console.log(id)
 		let userId = id ? "/user/" + id : ""
 		await axios
 			.get("https://mehm8128-study-server.herokuapp.com/api/goals" + userId)
