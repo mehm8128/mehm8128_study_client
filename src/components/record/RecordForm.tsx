@@ -13,7 +13,7 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 	const [comment, setComment] = useState("")
 
 	function handleSubmit() {
-		if (title !== "" && /[0-9]+/.test(page) && /[0-9]+/.test(time)) {
+		if (title !== "" && /[0-9]+ | \s/.test(page) && /[0-9]+/.test(time)) {
 			axios
 				.post("https://mehm8128-study-server.herokuapp.com/api/records", {
 					title: title,
