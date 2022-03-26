@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react'
 
 import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
@@ -7,16 +8,16 @@ import { UserContext } from '../UserProvider'
 import Record from './Record'
 
 import type { NextPage } from "next"
-
 type Props = {
 	userId?: string
 } & BoxProps
 
 const TimeLine: NextPage<Props> = (props) => {
+	const router = useRouter()
 	const { records, getRecords } = useContext(UserContext)
 	useEffect(() => {
-		getRecords(props.userId)
-	}, [])
+		getRecords(props.userId ? props.userId : "")
+	}, [router.pathname])
 	return (
 		<>
 			<Box {...props}>

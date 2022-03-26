@@ -13,27 +13,26 @@ import type { NextPage } from "next"
 const User: NextPage = () => {
 	const { me, getUsers } = useContext(UserContext)
 	const router = useRouter()
+	const id =
+		(router.query.userId as string) !== "me"
+			? (router.query.userId as string)
+			: me.id
 	if (router.isReady) {
 		if (!me.auth) router.replace("/login")
 	}
-	const [userId, setUserId] = useState<string>("")
 	const [user, setUser] = useState<User>({} as User)
 
 	useEffect(() => {
 		if (!router.isReady) {
 			return
 		}
-		setUserId(router.query.userId as string)
-		const id =
-			(router.query.userId as string) !== "me"
-				? (router.query.userId as string)
-				: me.id
 		getUsers()
 		axios
 			.get("http://localhost:8000/api/users/" + id)
 			.then((res) => setUser(res.data))
 			.catch((err) => alert(err))
 	}, [router.query])
+
 	return (
 		<>
 			<Box h="hull">
@@ -43,13 +42,13 @@ const User: NextPage = () => {
 						<Heading textAlign="center" mb={4}>
 							勉強の記録
 						</Heading>
-						<TimeLine overflowY="scroll" h="full" p={2} userId={me.id} />
+						<TimeLine overflowY="scroll" h="full" p={2} userId={id} />
 					</Box>
 					<Box width="50%" h={500}>
 						<Heading textAlign="center" mb={4}>
 							目標
 						</Heading>
-						<GoalList overflowY="scroll" h="full" p={2} userId={me.id} />
+						<GoalList overflowY="scroll" h="full" p={2} userId={id} />
 					</Box>
 				</Flex>
 			</Box>

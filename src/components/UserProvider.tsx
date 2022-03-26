@@ -19,9 +19,9 @@ export const UserContext = createContext<UserContextType>({} as UserContextType)
 
 export const UserProvider: React.FC = ({ children }) => {
 	const [me, setMe] = useState({
-		id: "",
-		name: "",
-		auth: false,
+		id: "67e60104-1d73-4083-9855-2de1145d70f5",
+		name: "mehm8128",
+		auth: true,
 	} as Me)
 	const [records, setRecords] = useState<RecordType[]>(new Array<RecordType>())
 	const [goals, setGoals] = useState<GoalType[]>(new Array<GoalType>())
@@ -33,15 +33,19 @@ export const UserProvider: React.FC = ({ children }) => {
 	const logout = () => {
 		setMe({ id: "", name: "", auth: false })
 	}
-	const getRecords = (id?: string) => {
-		const userId = id ? "/user/" + id : ""
-		axios.get("http://localhost:8000/api/records" + userId).then((res) => {
-			setRecords(res.data)
-		})
+	const getRecords = async (id?: string) => {
+		console.log(id)
+		let userId = id ? "/user/" + id : ""
+		await axios
+			.get("http://localhost:8000/api/records" + userId)
+			.then((res) => {
+				setRecords(res.data)
+			})
 	}
-	const getGoals = (id?: string) => {
-		const userId = id ? "/user/" + id : ""
-		axios.get("http://localhost:8000/api/goals" + userId).then((res) => {
+	const getGoals = async (id?: string) => {
+		console.log(id)
+		let userId = id ? "/user/" + id : ""
+		await axios.get("http://localhost:8000/api/goals" + userId).then((res) => {
 			setGoals(res.data)
 		})
 	}

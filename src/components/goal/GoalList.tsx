@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react'
 
 import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
@@ -12,10 +13,11 @@ type Props = {
 } & BoxProps
 
 const GoalList: NextPage<Props> = (props) => {
+	const router = useRouter()
 	const { goals, getGoals } = useContext(UserContext)
 	useEffect(() => {
-		getGoals(props.userId)
-	}, [])
+		getGoals(props.userId ? props.userId : "")
+	}, [router.pathname])
 	return (
 		<>
 			<Box {...props}>

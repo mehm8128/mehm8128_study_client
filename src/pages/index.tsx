@@ -23,7 +23,7 @@ const Index: NextPage = () => {
 						タイムライン
 					</Tab>
 					<Tab w="40%" fontSize={20}>
-						目標
+						みんなの目標
 					</Tab>
 				</TabList>
 				<TabPanels>
