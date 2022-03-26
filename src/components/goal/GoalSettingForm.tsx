@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useContext, useState } from 'react'
 
-import { Box, BoxProps, Button, Flex, Heading, Input } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
 
 import { UserContext } from '../UserProvider'
 
@@ -13,7 +13,7 @@ const GoalSettingForm: NextPage<BoxProps> = (props) => {
 	const [comment, setComment] = useState("")
 
 	function handleSubmit() {
-		if (title !== "") {
+		if (title !== "" && /^2[0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(goalDate)) {
 			axios
 				.post("http://localhost:8000/api/goals", {
 					title: title,
@@ -29,6 +29,8 @@ const GoalSettingForm: NextPage<BoxProps> = (props) => {
 					setComment("")
 				})
 				.catch((err) => alert(err))
+		} else {
+			alert("タイトルは必須です。期限はyyyy-mm-ddの形式で入力してください。")
 		}
 	}
 	return (
@@ -46,11 +48,12 @@ const GoalSettingForm: NextPage<BoxProps> = (props) => {
 						value={goalDate}
 						onChange={(e) => setGoalDate(e.target.value)}
 					></Input>
-					<Input
+					<Textarea
 						placeholder="コメント"
 						value={comment}
 						onChange={(e) => setComment(e.target.value)}
-					></Input>
+						resize="none"
+					></Textarea>
 					<Button onClick={handleSubmit}>目標を設定</Button>
 				</Flex>
 			</Box>

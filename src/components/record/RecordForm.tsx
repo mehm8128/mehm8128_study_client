@@ -2,18 +2,18 @@ import axios from 'axios'
 import { useContext, useState } from 'react'
 import { UserContext } from 'src/components/UserProvider'
 
-import { Box, BoxProps, Button, Flex, Heading, Input } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 const RecordForm: NextPage<BoxProps> = (props) => {
 	const { me, getRecords } = useContext(UserContext)
 	const [title, setTitle] = useState("")
-	const [page, setPage] = useState("") //todo:数字のみ受け付ける
-	const [time, setTime] = useState("") //todo:数字のみ受け付ける
+	const [page, setPage] = useState("")
+	const [time, setTime] = useState("")
 	const [comment, setComment] = useState("")
 
 	function handleSubmit() {
-		if (title !== "") {
+		if (title !== "" && /[0-9]+/.test(page) && /[0-9]+/.test(time)) {
 			axios
 				.post("http://localhost:8000/api/records", {
 					title: title,
@@ -30,6 +30,8 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 					setComment("")
 				})
 				.catch((err) => alert(err))
+		} else {
+			alert("タイトルは必須です。ページと時間は半角数字で入力してください。")
 		}
 	}
 
@@ -53,11 +55,12 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 						value={time}
 						onChange={(e) => setTime(e.target.value)}
 					></Input>
-					<Input
+					<Textarea
 						placeholder="コメント"
 						value={comment}
 						onChange={(e) => setComment(e.target.value)}
-					></Input>
+						resize="none"
+					></Textarea>
 					<Button onClick={handleSubmit}>記録</Button>
 				</Flex>
 			</Box>
