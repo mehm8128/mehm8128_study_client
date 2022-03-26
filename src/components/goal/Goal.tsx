@@ -1,3 +1,6 @@
+import axios from 'axios'
+import { useContext } from 'react'
+import { UserContext } from 'src/components/UserProvider'
 import { users } from 'src/mock/users'
 import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
@@ -5,20 +8,28 @@ import { dateFormatter } from 'src/utils/dateFormatter'
 import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
 
 import image from '../../assets/mehm8128.png'
-import { Goal } from '../../types/Goal'
+import { GoalType } from '../../types/Goal'
 
 import type { NextPage } from "next"
-
 type Props = {
-	goal: Goal
+	goal: GoalType
 }
 const Goal: NextPage<Props> = (props) => {
+	const { user, getGoals } = useContext(UserContext)
+	function handleFavorite() {
+		axios
+			.put("http://localhost:8000/api/goals/favorite/" + props.goal.id, {
+				createdBy: user.id,
+			})
+			.then(() => getGoals())
+			.catch((err) => alert(err))
+	}
 	return (
 		<>
 			<Box borderWidth={2} p={2}>
 				<Flex justifyContent="space-between">
 					<Center>
-						<Avatar name="aaa" src={image.src} mr={2}></Avatar>
+						<Avatar name={user.name} src={image.src} mr={2}></Avatar>
 						<Text fontSize={20}>
 							{createdByToString(props.goal.createdBy, users)}
 						</Text>
@@ -26,12 +37,15 @@ const Goal: NextPage<Props> = (props) => {
 					<Text>{dateFormatter(props.goal.createdAt)}</Text>
 				</Flex>
 				<Box ml={12}>
+					{props.goal.id}
 					<Text>目標を設定しました！</Text>
 					<Text>{props.goal.title}</Text>
 					<Text>{props.goal.comment}</Text>
 				</Box>
 				<Center>
-					<Button>いいね！ {props.goal.favoriteNum}</Button>
+					<Button onClick={handleFavorite}>
+						いいね！ {props.goal.favoriteNum}
+					</Button>
 				</Center>
 			</Box>
 		</>

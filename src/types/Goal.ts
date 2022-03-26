@@ -1,6 +1,6 @@
 import { GoalFavorite } from './Favorite'
 
-export type Goal = {
+export type GoalType = {
 	id: string
 	title: string
 	comment: string

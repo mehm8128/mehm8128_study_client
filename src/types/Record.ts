@@ -1,6 +1,6 @@
 import { RecordFavorite } from './Favorite'
 
-export type Record = {
+export type RecordType = {
 	id: string
 	title: string
 	page: number

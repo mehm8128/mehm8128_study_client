@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 
 import { UserProvider } from 'src/components/UserProvider'
-import { Me } from 'src/types/User'
 
 import { ChakraProvider } from '@chakra-ui/react'
 

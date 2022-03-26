@@ -1,15 +1,19 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import GoalList from 'src/components/goal/GoalList'
 import TimeLine from 'src/components/record/TimeLine'
 import UserIntro from 'src/components/UserIntro'
+import { UserContext } from 'src/components/UserProvider'
 
 import { Box, Flex, Heading } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
-
 const User: NextPage = () => {
+	const { user } = useContext(UserContext)
 	const router = useRouter()
+	if (router.isReady) {
+		if (!user.auth) router.replace("/login")
+	}
 	const [userId, setUserId] = useState<string>("")
 
 	useEffect(() => {

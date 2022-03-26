@@ -1,11 +1,17 @@
+import { useContext, useEffect } from 'react'
+
 import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
 
-import { records } from '../../mock/records'
+import { UserContext } from '../UserProvider'
+//import { records } from '../../mock/records'
 import Record from './Record'
 
 import type { NextPage } from "next"
-
 const TimeLine: NextPage<BoxProps> = (props) => {
+	const { records, getRecords } = useContext(UserContext)
+	useEffect(() => {
+		getRecords()
+	}, [])
 	return (
 		<>
 			<Box {...props}>
