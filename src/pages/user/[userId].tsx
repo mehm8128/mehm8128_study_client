@@ -42,13 +42,13 @@ const User: NextPage = () => {
 						<Heading textAlign="center" mb={4}>
 							勉強の記録
 						</Heading>
-						<TimeLine overflowY="scroll" h="full" p={2} userId={id} />
+						<TimeLine overflowY="scroll" h="full" p={2} userid={id} />
 					</Box>
 					<Box width="50%" h={500}>
 						<Heading textAlign="center" mb={4}>
 							目標
 						</Heading>
-						<GoalList overflowY="scroll" h="full" p={2} userId={id} />
+						<GoalList overflowY="scroll" h="full" p={2} userid={id} />
 					</Box>
 				</Flex>
 			</Box>

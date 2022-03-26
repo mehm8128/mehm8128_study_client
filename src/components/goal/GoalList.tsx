@@ -9,15 +9,15 @@ import Goal from './Goal'
 
 import type { NextPage } from "next"
 type Props = {
-	userId?: string
+	userid?: string
 } & BoxProps
 
 const GoalList: NextPage<Props> = (props) => {
 	const router = useRouter()
 	const { goals, getGoals } = useContext(UserContext)
 	useEffect(() => {
-		getGoals(props.userId ? props.userId : "")
-	}, [router.pathname])
+		getGoals(props.userid ? props.userid : "")
+	}, [router.asPath])
 	return (
 		<>
 			<Box {...props}>

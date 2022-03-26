@@ -9,15 +9,15 @@ import Record from './Record'
 
 import type { NextPage } from "next"
 type Props = {
-	userId?: string
+	userid?: string
 } & BoxProps
 
 const TimeLine: NextPage<Props> = (props) => {
 	const router = useRouter()
 	const { records, getRecords } = useContext(UserContext)
 	useEffect(() => {
-		getRecords(props.userId ? props.userId : "")
-	}, [router.pathname])
+		getRecords(props.userid ? props.userid : "")
+	}, [router.asPath])
 	return (
 		<>
 			<Box {...props}>

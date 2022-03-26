@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { UserContext } from 'src/components/UserProvider'
 //import { users } from 'src/mock/users'
@@ -15,13 +16,26 @@ type Props = {
 	goal: GoalType
 }
 const Goal: NextPage<Props> = (props) => {
+	const router = useRouter()
 	const { me, getGoals, users } = useContext(UserContext)
+	function handleComplete() {
+		axios
+			.put("http://localhost:8000/api/goals/" + props.goal.id, {
+				title: props.goal.title,
+				comment: props.goal.comment,
+				goalDate: props.goal.goalDate,
+				isCompleted: true,
+				createdBy: me.id,
+			})
+			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
+			.catch((err) => alert(err))
+	}
 	function handleFavorite() {
 		axios
 			.put("http://localhost:8000/api/goals/favorite/" + props.goal.id, {
 				createdBy: me.id,
 			})
-			.then(() => getGoals())
+			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
 	}
 	return (
@@ -48,7 +62,12 @@ const Goal: NextPage<Props> = (props) => {
 					<Text>期限：{props.goal.goalDate}</Text>
 					<Text>{props.goal.comment}</Text>
 				</Box>
-				<Center>
+				<Center justifyContent="space-evenly">
+					{props.goal.isCompleted ? (
+						<Button disabled={true}>完了済み</Button>
+					) : (
+						<Button onClick={handleComplete}>この目標を完了する</Button>
+					)}
 					<Button onClick={handleFavorite}>
 						いいね！ {props.goal.favoriteNum}
 					</Button>
