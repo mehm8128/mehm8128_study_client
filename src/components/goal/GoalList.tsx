@@ -7,11 +7,14 @@ import { UserContext } from '../UserProvider'
 import Goal from './Goal'
 
 import type { NextPage } from "next"
+type Props = {
+	userId?: string
+} & BoxProps
 
-const GoalList: NextPage<BoxProps> = (props) => {
+const GoalList: NextPage<Props> = (props) => {
 	const { goals, getGoals } = useContext(UserContext)
 	useEffect(() => {
-		getGoals()
+		getGoals(props.userId)
 	}, [])
 	return (
 		<>

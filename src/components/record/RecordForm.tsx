@@ -6,7 +6,7 @@ import { Box, BoxProps, Button, Flex, Heading, Input } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 const RecordForm: NextPage<BoxProps> = (props) => {
-	const { user, getRecords } = useContext(UserContext)
+	const { me, getRecords } = useContext(UserContext)
 	const [title, setTitle] = useState("")
 	const [page, setPage] = useState("") //todo:数字のみ受け付ける
 	const [time, setTime] = useState("") //todo:数字のみ受け付ける
@@ -20,9 +20,15 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 					page: Number(page),
 					time: Number(time),
 					comment: comment,
-					createdBy: user.id,
+					createdBy: me.id,
 				})
-				.then(() => getRecords())
+				.then(() => {
+					getRecords()
+					setTitle("")
+					setPage("")
+					setTime("")
+					setComment("")
+				})
 				.catch((err) => alert(err))
 		}
 	}

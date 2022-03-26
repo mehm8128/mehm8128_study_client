@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
 
 import { Box, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
@@ -7,6 +8,7 @@ import { UserContext } from '../UserProvider'
 
 import type { NextPage } from "next"
 const SignUp: NextPage = () => {
+	const router = useRouter()
 	const { login } = useContext(UserContext)
 	const [userName, setUserName] = useState("")
 	const [password, setPassword] = useState("")
@@ -31,7 +33,7 @@ const SignUp: NextPage = () => {
 						name: res.data.name,
 						auth: true,
 					})
-					alert("登録しました")
+					router.push("/")
 				})
 				.catch((err) => alert(err))
 		} else {

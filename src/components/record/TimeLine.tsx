@@ -7,10 +7,15 @@ import { UserContext } from '../UserProvider'
 import Record from './Record'
 
 import type { NextPage } from "next"
-const TimeLine: NextPage<BoxProps> = (props) => {
+
+type Props = {
+	userId?: string
+} & BoxProps
+
+const TimeLine: NextPage<Props> = (props) => {
 	const { records, getRecords } = useContext(UserContext)
 	useEffect(() => {
-		getRecords()
+		getRecords(props.userId)
 	}, [])
 	return (
 		<>

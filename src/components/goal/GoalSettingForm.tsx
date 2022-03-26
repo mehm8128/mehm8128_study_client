@@ -7,7 +7,7 @@ import { UserContext } from '../UserProvider'
 
 import type { NextPage } from "next"
 const GoalSettingForm: NextPage<BoxProps> = (props) => {
-	const { user, getGoals } = useContext(UserContext)
+	const { me, getGoals } = useContext(UserContext)
 	const [title, setTitle] = useState("")
 	const [goalDate, setGoalDate] = useState("")
 	const [comment, setComment] = useState("")
@@ -20,9 +20,14 @@ const GoalSettingForm: NextPage<BoxProps> = (props) => {
 					goalDate: goalDate,
 					comment: comment,
 					isCompleted: false,
-					createdBy: user.id,
+					createdBy: me.id,
 				})
-				.then(() => getGoals())
+				.then(() => {
+					getGoals()
+					setTitle("")
+					setGoalDate("")
+					setComment("")
+				})
 				.catch((err) => alert(err))
 		}
 	}

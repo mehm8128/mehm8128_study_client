@@ -1,43 +1,55 @@
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import GoalList from 'src/components/goal/GoalList'
 import TimeLine from 'src/components/record/TimeLine'
 import UserIntro from 'src/components/UserIntro'
 import { UserContext } from 'src/components/UserProvider'
+import { User } from 'src/types/User'
 
 import { Box, Flex, Heading } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
 const User: NextPage = () => {
-	const { user } = useContext(UserContext)
+	const { me, getUsers } = useContext(UserContext)
 	const router = useRouter()
 	if (router.isReady) {
-		if (!user.auth) router.replace("/login")
+		if (!me.auth) router.replace("/login")
 	}
 	const [userId, setUserId] = useState<string>("")
+	const [user, setUser] = useState<User>({} as User)
 
 	useEffect(() => {
 		if (!router.isReady) {
 			return
 		}
 		setUserId(router.query.userId as string)
+		const id =
+			(router.query.userId as string) !== "me"
+				? (router.query.userId as string)
+				: me.id
+		getUsers()
+		axios
+			.get("http://localhost:8000/api/users/" + id)
+			.then((res) => setUser(res.data))
+			.catch((err) => alert(err))
 	}, [router.query])
 	return (
 		<>
 			<Box h="hull">
-				<UserIntro userId={userId} />
+				<UserIntro user={user} />
 				<Flex>
 					<Box width="50%" h={500}>
 						<Heading textAlign="center" mb={4}>
 							勉強の記録
 						</Heading>
-						<TimeLine overflowY="scroll" h="full" p={2} />
+						<TimeLine overflowY="scroll" h="full" p={2} userId={me.id} />
 					</Box>
 					<Box width="50%" h={500}>
 						<Heading textAlign="center" mb={4}>
 							目標
 						</Heading>
-						<GoalList overflowY="scroll" h="full" p={2} />
+						<GoalList overflowY="scroll" h="full" p={2} userId={me.id} />
 					</Box>
 				</Flex>
 			</Box>
