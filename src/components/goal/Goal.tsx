@@ -20,31 +20,34 @@ const Goal: NextPage<Props> = (props) => {
 	const { me, getGoals, users } = useContext(UserContext)
 	function handleComplete() {
 		axios
-			.put(
-				"https://mehm8128-study-server.herokuapp.com/api/goals/" +
-					props.goal.id,
-				{
-					title: props.goal.title,
-					comment: props.goal.comment,
-					goalDate: props.goal.goalDate,
-					isCompleted: true,
-					createdBy: me.id,
-				}
-			)
+			.put(process.env.NEXT_PUBLIC_URL + "/api/goals/" + props.goal.id, {
+				title: props.goal.title,
+				comment: props.goal.comment,
+				goalDate: props.goal.goalDate,
+				isCompleted: true,
+				createdBy: me.id,
+			})
 			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
 	}
 	function handleFavorite() {
 		axios
 			.put(
-				"https://mehm8128-study-server.herokuapp.com/api/goals/favorite/" +
-					props.goal.id,
+				process.env.NEXT_PUBLIC_URL + "/api/goals/favorite/" + props.goal.id,
 				{
 					createdBy: me.id,
 				}
 			)
 			.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
+	}
+	function handleDelete() {
+		if (me.id === props.goal.createdBy) {
+			axios
+				.delete(process.env.NEXT_PUBLIC_URL + "/api/goals/" + props.goal.id)
+				.then(() => getGoals(router.asPath === "/user/me" ? me.id : ""))
+				.catch((err) => alert(err))
+		}
 	}
 	return (
 		<>
@@ -79,6 +82,9 @@ const Goal: NextPage<Props> = (props) => {
 					<Button onClick={handleFavorite}>
 						いいね！ {props.goal.favoriteNum}
 					</Button>
+					{me.id === props.goal.createdBy ? (
+						<Button onClick={handleDelete}>この目標を削除する</Button>
+					) : null}
 				</Center>
 			</Box>
 		</>

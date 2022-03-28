@@ -36,7 +36,7 @@ export const UserProvider: React.FC = ({ children }) => {
 	const getRecords = async (id?: string) => {
 		let userId = id ? "/user/" + id : ""
 		await axios
-			.get("https://mehm8128-study-server.herokuapp.com/api/records" + userId)
+			.get(process.env.NEXT_PUBLIC_URL + "/api/records" + userId)
 			.then((res) => {
 				setRecords(res.data)
 			})
@@ -44,17 +44,15 @@ export const UserProvider: React.FC = ({ children }) => {
 	const getGoals = async (id?: string) => {
 		let userId = id ? "/user/" + id : ""
 		await axios
-			.get("https://mehm8128-study-server.herokuapp.com/api/goals" + userId)
+			.get(process.env.NEXT_PUBLIC_URL + "/api/goals" + userId)
 			.then((res) => {
 				setGoals(res.data)
 			})
 	}
 	const getUsers = () => {
-		axios
-			.get("https://mehm8128-study-server.herokuapp.com/api/users")
-			.then((res) => {
-				setUsers(res.data)
-			})
+		axios.get(process.env.NEXT_PUBLIC_URL + "/api/users").then((res) => {
+			setUsers(res.data)
+		})
 	}
 	return (
 		<UserContext.Provider

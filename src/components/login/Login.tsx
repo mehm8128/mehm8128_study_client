@@ -14,7 +14,7 @@ const Login: NextPage = () => {
 	const [password, setPassword] = useState("")
 	function handleLogin() {
 		axios
-			.post("https://mehm8128-study-server.herokuapp.com/api/users/login", {
+			.post(process.env.NEXT_PUBLIC_URL + "/api/users/login", {
 				name: userName,
 				password: password,
 			})

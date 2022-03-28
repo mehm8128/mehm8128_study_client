@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import { useContext } from 'react'
 //import { users } from 'src/mock/users'
 import { createdByToString } from 'src/utils/createdByToString'
@@ -15,18 +16,28 @@ type Props = {
 	record: RecordType
 }
 const Record: NextPage<Props> = (props) => {
+	const router = useRouter()
 	const { me, getRecords, users } = useContext(UserContext)
 	function handleFavorite() {
 		axios
 			.put(
-				"https://mehm8128-study-server.herokuapp.com/api/records/favorite/" +
+				process.env.NEXT_PUBLIC_URL +
+					"/api/records/favorite/" +
 					props.record.id,
 				{
 					createdBy: me.id,
 				}
 			)
-			.then(() => getRecords())
+			.then(() => getRecords(router.asPath === "/user/me" ? me.id : ""))
 			.catch((err) => alert(err))
+	}
+	function handleDelete() {
+		if (me.id === props.record.createdBy) {
+			axios
+				.delete(process.env.NEXT_PUBLIC_URL + "/api/records/" + props.record.id)
+				.then(() => getRecords(router.asPath === "/user/me" ? me.id : ""))
+				.catch((err) => alert(err))
+		}
 	}
 	return (
 		<>
@@ -55,10 +66,13 @@ const Record: NextPage<Props> = (props) => {
 					</Text>
 					<Text>{props.record.comment}</Text>
 				</Box>
-				<Center>
+				<Center justifyContent="space-evenly">
 					<Button onClick={handleFavorite}>
 						いいね！ {props.record.favoriteNum}
 					</Button>
+					{me.id === props.record.createdBy ? (
+						<Button onClick={handleDelete}>この目標を削除する</Button>
+					) : null}
 				</Center>
 			</Box>
 		</>

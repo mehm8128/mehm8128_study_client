@@ -15,7 +15,7 @@ const GoalSettingForm: NextPage<BoxProps> = (props) => {
 	function handleSubmit() {
 		if (title !== "" && /^2[0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(goalDate)) {
 			axios
-				.post("https://mehm8128-study-server.herokuapp.com/api/goals", {
+				.post(process.env.NEXT_PUBLIC_URL + "/api/goals", {
 					title: title,
 					goalDate: goalDate,
 					comment: comment,

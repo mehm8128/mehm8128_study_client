@@ -18,7 +18,7 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 			page === ""
 		) {
 			axios
-				.post("https://mehm8128-study-server.herokuapp.com/api/records", {
+				.post(process.env.NEXT_PUBLIC_URL + "/api/records", {
 					title: title,
 					page: Number(page),
 					time: Number(time),

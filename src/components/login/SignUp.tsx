@@ -22,7 +22,7 @@ const SignUp: NextPage = () => {
 			password.length > 0
 		) {
 			axios
-				.post("https://mehm8128-study-server.herokuapp.com/api/users/signup", {
+				.post(process.env.NEXT_PUBLIC_URL + "/api/users/signup", {
 					name: userName,
 					password: password,
 					description: description,
