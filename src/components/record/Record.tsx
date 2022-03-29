@@ -4,7 +4,9 @@ import { useContext } from 'react'
 import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
 
-import { Avatar, Box, Button, Center, Flex, Text, useDisclosure } from '@chakra-ui/react'
+import {
+    Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
+} from '@chakra-ui/react'
 
 import { RecordType } from '../../types/Record'
 import LinkComponent from '../common/LinkComponent'
@@ -56,9 +58,36 @@ const Record: NextPage<Props> = (props) => {
 							</Text>
 						</Center>
 					</LinkComponent>
-					<Text>{dateFormatter(props.record.createdAt)}</Text>
+					<Flex>
+						<Flex alignItems="center">
+							<Text mr={4}>{dateFormatter(props.record.createdAt)}</Text>
+							{me.id === props.record.createdBy ? (
+								<>
+									<Menu>
+										<MenuButton
+											w={12}
+											h={12}
+											borderRadius="50%"
+											opacity="50%"
+											_hover={{ backgroundColor: "gray.200" }}
+										>
+											<Center>
+												<Text fontSize={12}>・・・</Text>
+											</Center>
+										</MenuButton>
+										<MenuList>
+											<MenuItem onClick={onOpen}>この記録を編集する</MenuItem>
+											<MenuItem onClick={handleDelete}>
+												この記録を削除する
+											</MenuItem>
+										</MenuList>
+									</Menu>
+								</>
+							) : null}
+						</Flex>
+					</Flex>
 				</Flex>
-				<Box ml={12}>
+				<Box ml={12} mb={4}>
 					<Text>{props.record.title}</Text>
 					<Text>
 						{props.record.time ? props.record.time + "分、" : ""}
@@ -71,12 +100,6 @@ const Record: NextPage<Props> = (props) => {
 					<Button onClick={handleFavorite}>
 						いいね！ {props.record.favoriteNum}
 					</Button>
-					{me.id === props.record.createdBy ? (
-						<>
-							<Button onClick={onOpen}>この目標を編集する</Button>
-							<Button onClick={handleDelete}>この目標を削除する</Button>
-						</>
-					) : null}
 				</Center>
 			</Box>
 			<RecordFixModal record={props.record} isOpen={isOpen} onClose={onClose} />

@@ -5,7 +5,9 @@ import { UserContext } from 'src/components/UserProvider'
 import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
 
-import { Avatar, Box, Button, Center, Flex, Text, useDisclosure } from '@chakra-ui/react'
+import {
+    Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
+} from '@chakra-ui/react'
 
 import { GoalType } from '../../types/Goal'
 import LinkComponent from '../common/LinkComponent'
@@ -66,9 +68,34 @@ const Goal: NextPage<Props> = (props) => {
 							</Text>
 						</Center>
 					</LinkComponent>
-					<Text>{dateFormatter(props.goal.createdAt)}</Text>
+					<Flex alignItems="center">
+						<Text mr={4}>{dateFormatter(props.goal.createdAt)}</Text>
+						{me.id === props.goal.createdBy ? (
+							<>
+								<Menu>
+									<MenuButton
+										w={12}
+										h={12}
+										borderRadius="50%"
+										opacity="50%"
+										_hover={{ backgroundColor: "gray.200" }}
+									>
+										<Center>
+											<Text fontSize={12}>・・・</Text>
+										</Center>
+									</MenuButton>
+									<MenuList>
+										<MenuItem onClick={onOpen}>この目標を編集する</MenuItem>
+										<MenuItem onClick={handleDelete}>
+											この目標を削除する
+										</MenuItem>
+									</MenuList>
+								</Menu>
+							</>
+						) : null}
+					</Flex>
 				</Flex>
-				<Box ml={12}>
+				<Box ml={12} mb={4}>
 					<Text>目標を設定しました！</Text>
 					<Text>{props.goal.title}</Text>
 					<Text>期限：{props.goal.goalDate}</Text>
@@ -83,12 +110,6 @@ const Goal: NextPage<Props> = (props) => {
 					<Button onClick={handleFavorite}>
 						いいね！ {props.goal.favoriteNum}
 					</Button>
-					{me.id === props.goal.createdBy ? (
-						<>
-							<Button onClick={onOpen}>この目標を編集する</Button>
-							<Button onClick={handleDelete}>この目標を削除する</Button>
-						</>
-					) : null}
 				</Center>
 			</Box>
 			<GoalFixModal goal={props.goal} isOpen={isOpen} onClose={onClose} />
