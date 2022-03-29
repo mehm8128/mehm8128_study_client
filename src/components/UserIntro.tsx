@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { UserContext } from 'src/components/UserProvider'
-//import { users } from 'src/mock/users'
 import { User } from 'src/types/User'
 import { createdByToString } from 'src/utils/createdByToString'
 import { minutesToHoursAndMinutes } from 'src/utils/minutesToHoursAndMinutes'

@@ -4,7 +4,6 @@ import { useContext, useEffect } from 'react'
 import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
 
 import { UserContext } from '../UserProvider'
-//import { goals } from '../../mock/goals'
 import Goal from './Goal'
 
 import type { NextPage } from "next"

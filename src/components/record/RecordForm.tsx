@@ -1,38 +1,78 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from 'src/components/UserProvider'
 
-import { Box, BoxProps, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Input, Text, Textarea } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
-const RecordForm: NextPage<BoxProps> = (props) => {
+
+type Props = {
+	type: "post" | "put"
+	defaultTitle?: string
+	defaultPage?: string
+	defaultTime?: string
+	defaultComment?: string
+} & BoxProps
+
+const RecordForm: NextPage<Props> = ({
+	defaultTitle = "",
+	defaultPage = "",
+	defaultTime = "",
+	defaultComment = "",
+	...props
+}) => {
 	const { me, getRecords } = useContext(UserContext)
 	const [title, setTitle] = useState("")
 	const [page, setPage] = useState("")
 	const [time, setTime] = useState("")
 	const [comment, setComment] = useState("")
+	useEffect(() => {
+		setTitle(defaultTitle)
+		setPage(defaultPage)
+		setTime(defaultTime)
+		setComment(defaultComment)
+	}, [defaultTitle, defaultPage, defaultTime, defaultComment])
 
 	function handleSubmit() {
 		if (
 			(title !== "" && /[0-9]+/.test(time) && /[0-9]+/.test(page)) ||
 			page === ""
 		) {
-			axios
-				.post(process.env.NEXT_PUBLIC_URL + "/api/records", {
-					title: title,
-					page: Number(page),
-					time: Number(time),
-					comment: comment,
-					createdBy: me.id,
-				})
-				.then(() => {
-					getRecords()
-					setTitle("")
-					setPage("")
-					setTime("")
-					setComment("")
-				})
-				.catch((err) => alert(err))
+			if (props.type === "post") {
+				axios
+					.post(process.env.NEXT_PUBLIC_URL + "/api/records", {
+						title: title,
+						page: Number(page),
+						time: Number(time),
+						comment: comment,
+						createdBy: me.id,
+					})
+					.then(() => {
+						getRecords()
+						setTitle("")
+						setPage("")
+						setTime("")
+						setComment("")
+					})
+					.catch((err) => alert(err))
+			} else {
+				axios
+					.put(process.env.NEXT_PUBLIC_URL + "/api/records", {
+						title: title,
+						page: Number(page),
+						time: Number(time),
+						comment: comment,
+						createdBy: me.id,
+					})
+					.then(() => {
+						getRecords()
+						setTitle("")
+						setPage("")
+						setTime("")
+						setComment("")
+					})
+					.catch((err) => alert(err))
+			}
 		} else {
 			alert("タイトルは必須です。ページと時間は半角数字で入力してください。")
 		}
@@ -40,33 +80,36 @@ const RecordForm: NextPage<BoxProps> = (props) => {
 
 	return (
 		<>
-			<Box borderWidth={2} p={8} h={400} {...props}>
-				<Heading>勉強の記録</Heading>
-				<Flex flexDirection="column" justifyContent="space-around" h="80%">
-					<Input
-						placeholder="タイトル"
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
-					></Input>
-					<Input
-						placeholder="ページ数"
-						value={page}
-						onChange={(e) => setPage(e.target.value)}
-					></Input>
-					<Input
-						placeholder="時間"
-						value={time}
-						onChange={(e) => setTime(e.target.value)}
-					></Input>
-					<Textarea
-						placeholder="コメント"
-						value={comment}
-						onChange={(e) => setComment(e.target.value)}
-						resize="none"
-					></Textarea>
+			<Flex flexDirection="column" justifyContent="space-around" h="80%">
+				<Text>タイトル</Text>
+				<Input
+					placeholder="必須項目"
+					value={title}
+					onChange={(e) => setTitle(e.target.value)}
+				></Input>
+				<Text>ページ数</Text>
+				<Input
+					placeholder="半角数字(任意)"
+					value={page}
+					onChange={(e) => setPage(e.target.value)}
+				></Input>{" "}
+				<Text>時間</Text>
+				<Input
+					placeholder="半角数字(任意)"
+					value={time}
+					onChange={(e) => setTime(e.target.value)}
+				></Input>
+				<Text>コメント</Text>
+				<Textarea
+					placeholder="任意"
+					value={comment}
+					onChange={(e) => setComment(e.target.value)}
+					resize="none"
+				></Textarea>
+				{props.type === "post" ? (
 					<Button onClick={handleSubmit}>記録</Button>
-				</Flex>
-			</Box>
+				) : null}
+			</Flex>
 		</>
 	)
 }

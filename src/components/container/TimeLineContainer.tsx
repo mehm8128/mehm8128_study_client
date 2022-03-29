@@ -10,7 +10,10 @@ const TimeLineContainer: NextPage = () => {
 		<>
 			<Flex justifyContent="space-around">
 				<TimeLine w="60%" />
-				<RecordForm w="30%" />
+				<Box w="30%" borderWidth={2} p={8} h={580}>
+					<Heading>勉強の記録</Heading>
+					<RecordForm type="post" />
+				</Box>
 			</Flex>
 		</>
 	)

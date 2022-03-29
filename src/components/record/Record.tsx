@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
-//import { users } from 'src/mock/users'
 import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
 
-import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Center, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { RecordType } from '../../types/Record'
 import LinkComponent from '../common/LinkComponent'
 import { UserContext } from '../UserProvider'
+import RecordFixModal from './RecordFixModal'
 
 import type { NextPage } from "next"
 type Props = {
@@ -18,6 +18,7 @@ type Props = {
 const Record: NextPage<Props> = (props) => {
 	const router = useRouter()
 	const { me, getRecords, users } = useContext(UserContext)
+	const { isOpen, onOpen, onClose } = useDisclosure()
 	function handleFavorite() {
 		axios
 			.put(
@@ -71,10 +72,14 @@ const Record: NextPage<Props> = (props) => {
 						いいね！ {props.record.favoriteNum}
 					</Button>
 					{me.id === props.record.createdBy ? (
-						<Button onClick={handleDelete}>この目標を削除する</Button>
+						<>
+							<Button onClick={onOpen}>この目標を編集する</Button>
+							<Button onClick={handleDelete}>この目標を削除する</Button>
+						</>
 					) : null}
 				</Center>
 			</Box>
+			<RecordFixModal record={props.record} isOpen={isOpen} onClose={onClose} />
 		</>
 	)
 }

@@ -2,14 +2,14 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { UserContext } from 'src/components/UserProvider'
-//import { users } from 'src/mock/users'
 import { createdByToString } from 'src/utils/createdByToString'
 import { dateFormatter } from 'src/utils/dateFormatter'
 
-import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Center, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { GoalType } from '../../types/Goal'
 import LinkComponent from '../common/LinkComponent'
+import GoalFixModal from './GoalFixModal'
 
 import type { NextPage } from "next"
 type Props = {
@@ -18,6 +18,7 @@ type Props = {
 const Goal: NextPage<Props> = (props) => {
 	const router = useRouter()
 	const { me, getGoals, users } = useContext(UserContext)
+	const { isOpen, onOpen, onClose } = useDisclosure()
 	function handleComplete() {
 		axios
 			.put(process.env.NEXT_PUBLIC_URL + "/api/goals/" + props.goal.id, {
@@ -83,10 +84,14 @@ const Goal: NextPage<Props> = (props) => {
 						いいね！ {props.goal.favoriteNum}
 					</Button>
 					{me.id === props.goal.createdBy ? (
-						<Button onClick={handleDelete}>この目標を削除する</Button>
+						<>
+							<Button onClick={onOpen}>この目標を編集する</Button>
+							<Button onClick={handleDelete}>この目標を削除する</Button>
+						</>
 					) : null}
 				</Center>
 			</Box>
+			<GoalFixModal goal={props.goal} isOpen={isOpen} onClose={onClose} />
 		</>
 	)
 }

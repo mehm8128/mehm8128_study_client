@@ -4,7 +4,6 @@ import { useContext, useEffect } from 'react'
 import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
 
 import { UserContext } from '../UserProvider'
-//import { records } from '../../mock/records'
 import Record from './Record'
 
 import type { NextPage } from "next"

@@ -19,9 +19,9 @@ export const UserContext = createContext<UserContextType>({} as UserContextType)
 
 export const UserProvider: React.FC = ({ children }) => {
 	const [me, setMe] = useState({
-		id: "",
-		name: "",
-		auth: false,
+		id: "67e60104-1d73-4083-9855-2de1145d70f5",
+		name: "mehm8128",
+		auth: true,
 	} as Me)
 	const [records, setRecords] = useState<RecordType[]>(new Array<RecordType>())
 	const [goals, setGoals] = useState<GoalType[]>(new Array<GoalType>())
