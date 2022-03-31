@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Input } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 
 import RecordForm from '../record/RecordForm'
 import TimeLine from '../record/TimeLine'

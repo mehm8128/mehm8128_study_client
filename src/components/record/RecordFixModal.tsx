@@ -1,5 +1,5 @@
 import {
-    Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay
+    Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay
 } from '@chakra-ui/react'
 
 import { RecordType } from '../../types/Record'
@@ -27,14 +27,10 @@ const RecordFixModal: NextPage<Props> = (props) => {
 							defaultPage={props.record.page.toString()}
 							defaultTime={props.record.time.toString()}
 							defaultComment={props.record.comment}
+							id={props.record.id}
+							onClose={props.onClose}
 						/>
 					</ModalBody>
-					<ModalFooter>
-						<Button colorScheme="blue" mr={3}>
-							決定
-						</Button>
-						<Button onClick={props.onClose}>Cancel</Button>
-					</ModalFooter>
 				</ModalContent>
 			</Modal>
 		</>

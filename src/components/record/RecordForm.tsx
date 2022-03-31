@@ -12,6 +12,8 @@ type Props = {
 	defaultPage?: string
 	defaultTime?: string
 	defaultComment?: string
+	id?: string
+	onClose?: () => void
 } & BoxProps
 
 const RecordForm: NextPage<Props> = ({
@@ -19,6 +21,7 @@ const RecordForm: NextPage<Props> = ({
 	defaultPage = "",
 	defaultTime = "",
 	defaultComment = "",
+	id = "",
 	...props
 }) => {
 	const { me, getRecords } = useContext(UserContext)
@@ -57,7 +60,7 @@ const RecordForm: NextPage<Props> = ({
 					.catch((err) => alert(err))
 			} else {
 				axios
-					.put(process.env.NEXT_PUBLIC_URL + "/api/records", {
+					.put(process.env.NEXT_PUBLIC_URL + "/api/records/" + id, {
 						title: title,
 						page: Number(page),
 						time: Number(time),
@@ -70,6 +73,9 @@ const RecordForm: NextPage<Props> = ({
 						setPage("")
 						setTime("")
 						setComment("")
+						if (props.onClose !== undefined) {
+							props.onClose()
+						}
 					})
 					.catch((err) => alert(err))
 			}
@@ -108,7 +114,16 @@ const RecordForm: NextPage<Props> = ({
 				></Textarea>
 				{props.type === "post" ? (
 					<Button onClick={handleSubmit}>記録</Button>
-				) : null}
+				) : (
+					<Flex justifyContent="space-around" mt={4}>
+						<Button colorScheme="blue" onClick={handleSubmit} w={32}>
+							決定
+						</Button>
+						<Button onClick={props.onClose} w={32}>
+							戻る
+						</Button>
+					</Flex>
+				)}
 			</Flex>
 		</>
 	)

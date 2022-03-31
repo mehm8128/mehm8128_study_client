@@ -13,12 +13,15 @@ type Props = {
 	defaultTitle?: string
 	defaultGoalDate?: string
 	defaultComment?: string
+	id?: string
+	onClose?: () => void
 } & BoxProps
 
 const GoalSettingForm: NextPage<Props> = ({
 	defaultTitle = "",
 	defaultGoalDate = "",
 	defaultComment = "",
+	id = "",
 	...props
 }) => {
 	const { me, getGoals } = useContext(UserContext)
@@ -51,7 +54,7 @@ const GoalSettingForm: NextPage<Props> = ({
 					.catch((err) => alert(err))
 			} else {
 				axios
-					.put(process.env.NEXT_PUBLIC_URL + "/api/goals", {
+					.put(process.env.NEXT_PUBLIC_URL + "/api/goals/" + id, {
 						title: title,
 						goalDate: goalDate,
 						comment: comment,
@@ -63,6 +66,9 @@ const GoalSettingForm: NextPage<Props> = ({
 						setTitle("")
 						setGoalDate("")
 						setComment("")
+						if (props.onClose !== undefined) {
+							props.onClose()
+						}
 					})
 					.catch((err) => alert(err))
 			}
@@ -95,7 +101,16 @@ const GoalSettingForm: NextPage<Props> = ({
 				></Textarea>
 				{props.type === "post" ? (
 					<Button onClick={handleSubmit}>目標を設定</Button>
-				) : null}
+				) : (
+					<Flex justifyContent="space-around" mt={4}>
+						<Button colorScheme="blue" onClick={handleSubmit} w={32}>
+							決定
+						</Button>
+						<Button onClick={props.onClose} w={32}>
+							戻る
+						</Button>
+					</Flex>
+				)}
 			</Flex>
 		</>
 	)

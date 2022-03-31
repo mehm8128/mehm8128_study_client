@@ -72,7 +72,9 @@ const Record: NextPage<Props> = (props) => {
 											_hover={{ backgroundColor: "gray.200" }}
 										>
 											<Center>
-												<Text fontSize={12}>・・・</Text>
+												<Text fontSize={12} fontWeight="bold">
+													・・・
+												</Text>
 											</Center>
 										</MenuButton>
 										<MenuList>

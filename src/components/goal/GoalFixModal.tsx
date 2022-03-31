@@ -1,5 +1,5 @@
 import {
-    Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay
+    Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay
 } from '@chakra-ui/react'
 
 import { GoalType } from '../../types/Goal'
@@ -27,14 +27,10 @@ const GoalFixModal: NextPage<Props> = (props) => {
 							defaultTitle={props.goal.title}
 							defaultGoalDate={props.goal.goalDate}
 							defaultComment={props.goal.comment}
+							id={props.goal.id}
+							onClose={props.onClose}
 						/>
 					</ModalBody>
-					<ModalFooter>
-						<Button colorScheme="blue" mr={3}>
-							決定
-						</Button>
-						<Button onClick={props.onClose}>Cancel</Button>
-					</ModalFooter>
 				</ModalContent>
 			</Modal>
 		</>
