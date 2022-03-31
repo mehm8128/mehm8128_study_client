@@ -96,7 +96,7 @@ const Record: NextPage<Props> = (props) => {
 						{props.record.page ? props.record.page + "ページ " : ""}
 						勉強しました！
 					</Text>
-					<Text>{props.record.comment}</Text>
+					<Text whiteSpace="pre-wrap">{props.record.comment}</Text>
 				</Box>
 				<Center justifyContent="space-evenly">
 					<Button onClick={handleFavorite}>

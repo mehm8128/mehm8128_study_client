@@ -101,7 +101,7 @@ const Goal: NextPage<Props> = (props) => {
 					<Text>目標を設定しました！</Text>
 					<Text>{props.goal.title}</Text>
 					<Text>期限：{props.goal.goalDate}</Text>
-					<Text>{props.goal.comment}</Text>
+					<Text whiteSpace="pre-wrap">{props.goal.comment}</Text>
 				</Box>
 				<Center justifyContent="space-evenly">
 					{props.goal.isCompleted ? (

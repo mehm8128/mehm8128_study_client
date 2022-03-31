@@ -26,7 +26,7 @@ const UserIntro: NextPage<Props> = (props) => {
 				</Flex>
 				<Box height={20} py={4} px={4}>
 					<Text>総勉強時間：{minutesToHoursAndMinutes(fullStudyTime)}</Text>
-					<Text>{props.user.description}</Text>
+					<Text whiteSpace="pre-wrap">{props.user.description}</Text>
 				</Box>
 			</Box>
 		</>
