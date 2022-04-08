@@ -30,7 +30,12 @@ const Login: NextPage = () => {
 	}
 	return (
 		<>
-			<Box borderWidth={4} borderColor="gray.200" h="70%" w="40%">
+			<Box
+				borderWidth={4}
+				borderColor="gray.200"
+				h="70%"
+				w={{ base: "100%", md: "40%" }}
+			>
 				<Heading textAlign="center" mt={2}>
 					ログイン
 				</Heading>

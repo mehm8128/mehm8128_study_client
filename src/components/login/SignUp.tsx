@@ -7,6 +7,7 @@ import { Box, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
 import { UserContext } from '../UserProvider'
 
 import type { NextPage } from "next"
+
 const SignUp: NextPage = () => {
 	const router = useRouter()
 	const { login } = useContext(UserContext)
@@ -45,7 +46,12 @@ const SignUp: NextPage = () => {
 
 	return (
 		<>
-			<Box borderWidth={4} borderColor="gray.200" w="40%">
+			<Box
+				borderWidth={4}
+				borderColor="gray.200"
+				w={{ base: "100%", md: "40%" }}
+				mb={{ base: 12 }}
+			>
 				<Heading textAlign="center" mt={2}>
 					新規登録
 				</Heading>
