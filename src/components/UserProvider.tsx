@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { createContext, useState } from 'react'
-import { GoalType } from 'src/types/Goal'
-import { RecordType } from 'src/types/Record'
-import { Me, User } from 'src/types/User'
+import { GoalType } from 'src/types/goal'
+import { RecordType } from 'src/types/record'
+import { Me, User } from 'src/types/user'
 
 type UserContextType = {
 	me: Me

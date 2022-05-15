@@ -1,4 +1,4 @@
-import { GoalFavorite } from './Favorite'
+import { GoalFavorite } from './favorite'
 
 export type GoalType = {
 	id: string

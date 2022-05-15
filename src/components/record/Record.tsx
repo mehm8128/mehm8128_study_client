@@ -8,7 +8,7 @@ import {
     Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
 } from '@chakra-ui/react'
 
-import { RecordType } from '../../types/Record'
+import { RecordType } from '../../types/record'
 import LinkComponent from '../common/LinkComponent'
 import { UserContext } from '../UserProvider'
 import RecordFixModal from './RecordFixModal'

@@ -1,4 +1,4 @@
-import { GoalType } from '../types/Goal'
+import { GoalType } from '../types/goal'
 
 export const goals: GoalType[] = [
 	{

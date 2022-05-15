@@ -2,7 +2,7 @@ import {
     Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay
 } from '@chakra-ui/react'
 
-import { GoalType } from '../../types/Goal'
+import { GoalType } from '../../types/goal'
 import GoalSettingForm from './GoalSettingForm'
 
 import type { NextPage } from "next"

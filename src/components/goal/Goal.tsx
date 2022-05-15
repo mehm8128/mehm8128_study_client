@@ -9,7 +9,7 @@ import {
     Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
 } from '@chakra-ui/react'
 
-import { GoalType } from '../../types/Goal'
+import { GoalType } from '../../types/goal'
 import LinkComponent from '../common/LinkComponent'
 import GoalFixModal from './GoalFixModal'
 

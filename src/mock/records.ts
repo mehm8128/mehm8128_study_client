@@ -1,4 +1,4 @@
-import { RecordType } from '../types/Record'
+import { RecordType } from '../types/record'
 
 export const records: RecordType[] = [
 	{

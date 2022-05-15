@@ -1,4 +1,4 @@
-import { RecordFavorite } from './Favorite'
+import { RecordFavorite } from './favorite'
 
 export type RecordType = {
 	id: string

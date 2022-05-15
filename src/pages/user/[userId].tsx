@@ -5,11 +5,12 @@ import GoalList from 'src/components/goal/GoalList'
 import TimeLine from 'src/components/record/TimeLine'
 import UserIntro from 'src/components/UserIntro'
 import { UserContext } from 'src/components/UserProvider'
-import { User } from 'src/types/User'
+import { User } from 'src/types/user'
 
 import { Box, Flex, Heading } from '@chakra-ui/react'
 
 import type { NextPage } from "next"
+
 const User: NextPage = () => {
 	const { me, getUsers } = useContext(UserContext)
 	const router = useRouter()
