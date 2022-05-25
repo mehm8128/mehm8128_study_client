@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@3
+        with:
+          node-version: '14'
+      - name: yarn install
+        run: yarn install
+      - name: yarn lint
+        run: yarn lint
