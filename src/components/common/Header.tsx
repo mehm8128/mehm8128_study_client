@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-
-import { Box, Button, Flex, Heading } from '@chakra-ui/react'
-
-import { UserContext } from '../UserProvider'
-import LinkComponent from './LinkComponent'
-
+import { Button, Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
+import { useContext } from "react"
+
+import { UserContext } from "../UserProvider"
+import LinkComponent from "./LinkComponent"
 
 const Header: NextPage = () => {
 	const { me, logout } = useContext(UserContext)

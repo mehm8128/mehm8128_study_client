@@ -1,11 +1,15 @@
 import {
-    Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay
-} from '@chakra-ui/react'
-
-import { GoalType } from '../../types/goal'
-import GoalSettingForm from './GoalSettingForm'
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalCloseButton,
+	ModalBody,
+} from "@chakra-ui/react"
 
 import type { NextPage } from "next"
+import { GoalType } from "../../types/goal"
+import GoalSettingForm from "./GoalSettingForm"
 
 type Props = {
 	goal: GoalType

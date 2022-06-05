@@ -1,6 +1,27 @@
 {
-	"extends": "next/core-web-vitals",
+	"extends": [
+		"next",
+		"next/core-web-vitals",
+		"plugin:import/recommended",
+		"plugin:import/warnings",
+		"eslint:recommended",
+		"prettier",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended"
+	],
+	"plugins": ["unused-imports", "import"],
 	"rules": {
-		"react-hooks/exhaustive-deps": "off"
+		"import/order": [
+			"warn",
+			{
+				"alphabetize": {
+					"order": "asc"
+				}
+			}
+		],
+		"react-hooks/exhaustive-deps": "off",
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		"unused-imports/no-unused-imports": "warn"
 	}
 }

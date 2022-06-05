@@ -1,19 +1,28 @@
-import axios from 'axios'
-import { useRouter } from 'next/router'
-import { useContext } from 'react'
-import { createdByToString } from 'src/utils/createdByToString'
-import { dateFormatter } from 'src/utils/dateFormatter'
-
 import {
-    Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
-} from '@chakra-ui/react'
-
-import { RecordType } from '../../types/record'
-import LinkComponent from '../common/LinkComponent'
-import { UserContext } from '../UserProvider'
-import RecordFixModal from './RecordFixModal'
-
+	Avatar,
+	Box,
+	Button,
+	Center,
+	Flex,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuList,
+	Text,
+	useDisclosure,
+} from "@chakra-ui/react"
+import axios from "axios"
 import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import { useContext } from "react"
+
+import { RecordType } from "../../types/record"
+import { UserContext } from "../UserProvider"
+import LinkComponent from "../common/LinkComponent"
+import RecordFixModal from "./RecordFixModal"
+import { createdByToString } from "src/utils/createdByToString"
+import { dateFormatter } from "src/utils/dateFormatter"
+
 type Props = {
 	record: RecordType
 }

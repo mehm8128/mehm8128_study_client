@@ -1,19 +1,27 @@
-import axios from 'axios'
-import { useRouter } from 'next/router'
-import { useContext } from 'react'
-import { UserContext } from 'src/components/UserProvider'
-import { createdByToString } from 'src/utils/createdByToString'
-import { dateFormatter } from 'src/utils/dateFormatter'
-
 import {
-    Avatar, Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure
-} from '@chakra-ui/react'
-
-import { GoalType } from '../../types/goal'
-import LinkComponent from '../common/LinkComponent'
-import GoalFixModal from './GoalFixModal'
-
+	Avatar,
+	Box,
+	Button,
+	Center,
+	Flex,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuList,
+	Text,
+	useDisclosure,
+} from "@chakra-ui/react"
+import axios from "axios"
 import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import { useContext } from "react"
+import { GoalType } from "../../types/goal"
+import LinkComponent from "../common/LinkComponent"
+import GoalFixModal from "./GoalFixModal"
+import { UserContext } from "src/components/UserProvider"
+import { createdByToString } from "src/utils/createdByToString"
+import { dateFormatter } from "src/utils/dateFormatter"
+
 type Props = {
 	goal: GoalType
 }

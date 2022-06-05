@@ -1,9 +1,8 @@
-import { Flex, Heading } from '@chakra-ui/react'
-
-import Login from '../components/login/Login'
-import SignUp from '../components/login/SignUp'
+import { Flex, Heading } from "@chakra-ui/react"
 
 import type { NextPage } from "next"
+import Login from "../components/login/Login"
+import SignUp from "../components/login/SignUp"
 
 const LoginPage: NextPage = () => {
 	return (

@@ -1,9 +1,7 @@
-import { useContext } from 'react'
-import LinkComponent from 'src/components/common/LinkComponent'
-
-import { ListItem, UnorderedList } from '@chakra-ui/react'
+import { ListItem, UnorderedList } from "@chakra-ui/react"
 
 import type { NextPage } from "next"
+import LinkComponent from "src/components/common/LinkComponent"
 
 const MemorizePortal: NextPage = () => {
 	return (

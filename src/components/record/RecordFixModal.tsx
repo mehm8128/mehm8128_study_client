@@ -1,11 +1,15 @@
 import {
-    Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay
-} from '@chakra-ui/react'
-
-import { RecordType } from '../../types/record'
-import RecordForm from './RecordForm'
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalHeader,
+	ModalOverlay,
+} from "@chakra-ui/react"
 
 import type { NextPage } from "next"
+import { RecordType } from "../../types/record"
+import RecordForm from "./RecordForm"
 
 type Props = {
 	record: RecordType

@@ -1,12 +1,10 @@
-import axios from 'axios'
-import { useRouter } from 'next/router'
-import { useContext, useState } from 'react'
-
-import { Box, Button, Flex, Heading, Input, Textarea } from '@chakra-ui/react'
-
-import { UserContext } from '../UserProvider'
-
+import { Box, Button, Flex, Heading, Input, Textarea } from "@chakra-ui/react"
+import axios from "axios"
 import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import { useContext, useState } from "react"
+
+import { UserContext } from "../UserProvider"
 
 const SignUp: NextPage = () => {
 	const router = useRouter()

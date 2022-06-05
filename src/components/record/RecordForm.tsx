@@ -1,10 +1,9 @@
-import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
-import { UserContext } from 'src/components/UserProvider'
-
-import { Box, BoxProps, Button, Flex, Heading, Input, Text, Textarea } from '@chakra-ui/react'
-
+import { Button, Flex, Input, Text, Textarea } from "@chakra-ui/react"
+import type { BoxProps } from "@chakra-ui/react"
+import axios from "axios"
 import type { NextPage } from "next"
+import { useContext, useEffect, useState } from "react"
+import { UserContext } from "src/components/UserProvider"
 
 type Props = {
 	type: "post" | "put"

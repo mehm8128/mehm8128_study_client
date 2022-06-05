@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
-
-import { Box, BoxProps, ListItem, UnorderedList } from '@chakra-ui/react'
-
-import { UserContext } from '../UserProvider'
-import Record from './Record'
-
+import { Box, ListItem, UnorderedList } from "@chakra-ui/react"
+import type { BoxProps } from "@chakra-ui/react"
 import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import { useContext, useEffect } from "react"
+
+import { UserContext } from "../UserProvider"
+import Record from "./Record"
+
 type Props = {
 	userid?: string
 } & BoxProps

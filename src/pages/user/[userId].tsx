@@ -1,15 +1,13 @@
-import axios from 'axios'
-import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
-import GoalList from 'src/components/goal/GoalList'
-import TimeLine from 'src/components/record/TimeLine'
-import UserIntro from 'src/components/UserIntro'
-import { UserContext } from 'src/components/UserProvider'
-import { User } from 'src/types/user'
-
-import { Box, Flex, Heading } from '@chakra-ui/react'
-
+import { Box, Flex, Heading } from "@chakra-ui/react"
+import axios from "axios"
 import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import { useContext, useEffect, useState } from "react"
+import UserIntro from "src/components/UserIntro"
+import { UserContext } from "src/components/UserProvider"
+import GoalList from "src/components/goal/GoalList"
+import TimeLine from "src/components/record/TimeLine"
+import { User } from "src/types/user"
 
 const User: NextPage = () => {
 	const { me, getUsers } = useContext(UserContext)

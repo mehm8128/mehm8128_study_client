@@ -1,12 +1,12 @@
 export type MemorizeType = {
 	id: string
 	name: string
-	words: Word[]
+	words: WordType[]
 	createdAt: string
 	updatedAt: string
 }
 
-export type Word = {
+export type WordType = {
 	id: string
 	name: string
 	nameJp: string
