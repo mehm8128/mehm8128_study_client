@@ -8,7 +8,7 @@ export type MemorizeType = {
 
 export type WordType = {
 	id: string
-	name: string
-	nameJp: string
+	word: string
+	wordJp: string
 	createdAt: string
 }
