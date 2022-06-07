@@ -1,6 +1,5 @@
 import { Box, ListItem, UnorderedList } from "@chakra-ui/react"
 import type { BoxProps } from "@chakra-ui/react"
-import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
 
@@ -11,7 +10,7 @@ type Props = {
 	userid?: string
 } & BoxProps
 
-const GoalList: NextPage<Props> = (props) => {
+const GoalList: React.FC<Props> = (props) => {
 	const router = useRouter()
 	const { goals, getGoals } = useContext(UserContext)
 	useEffect(() => {

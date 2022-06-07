@@ -1,10 +1,9 @@
 import { Box, Flex, Heading } from "@chakra-ui/react"
 
-import type { NextPage } from "next"
 import RecordForm from "../record/RecordForm"
 import TimeLine from "../record/TimeLine"
 
-const TimeLineContainer: NextPage = () => {
+const TimeLineContainer: React.FC = () => {
 	return (
 		<>
 			<Flex

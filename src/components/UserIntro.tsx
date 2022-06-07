@@ -1,16 +1,15 @@
-import { useContext } from 'react'
-import { UserContext } from 'src/components/UserProvider'
-import { User } from 'src/types/user'
-import { createdByToString } from 'src/utils/createdByToString'
-import { minutesToHoursAndMinutes } from 'src/utils/minutesToHoursAndMinutes'
+import { useContext } from "react"
+import { UserContext } from "src/components/UserProvider"
+import { User } from "src/types/user"
+import { createdByToString } from "src/utils/createdByToString"
+import { minutesToHoursAndMinutes } from "src/utils/minutesToHoursAndMinutes"
 
-import { Avatar, Box, Center, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Box, Center, Flex, Text } from "@chakra-ui/react"
 
-import type { NextPage } from "next"
 type Props = {
 	user: User
 }
-const UserIntro: NextPage<Props> = (props) => {
+const UserIntro: React.FC<Props> = (props) => {
 	const { users, records } = useContext(UserContext)
 	const fullStudyTime = records.reduce((acc, record) => {
 		return acc + record.time

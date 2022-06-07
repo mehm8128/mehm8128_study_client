@@ -12,7 +12,6 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react"
 import axios from "axios"
-import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext } from "react"
 import { GoalType } from "../../types/goal"
@@ -25,7 +24,7 @@ import { dateFormatter } from "src/utils/dateFormatter"
 type Props = {
 	goal: GoalType
 }
-const Goal: NextPage<Props> = (props) => {
+const Goal: React.FC<Props> = (props) => {
 	const router = useRouter()
 	const { me, getGoals, users } = useContext(UserContext)
 	const { isOpen, onOpen, onClose } = useDisclosure()

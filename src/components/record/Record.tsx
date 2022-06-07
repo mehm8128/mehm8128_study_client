@@ -12,7 +12,6 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react"
 import axios from "axios"
-import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext } from "react"
 
@@ -26,7 +25,7 @@ import { dateFormatter } from "src/utils/dateFormatter"
 type Props = {
 	record: RecordType
 }
-const Record: NextPage<Props> = (props) => {
+const Record: React.FC<Props> = (props) => {
 	const router = useRouter()
 	const { me, getRecords, users } = useContext(UserContext)
 	const { isOpen, onOpen, onClose } = useDisclosure()

@@ -7,7 +7,6 @@ import {
 	ModalOverlay,
 } from "@chakra-ui/react"
 
-import type { NextPage } from "next"
 import { RecordType } from "../../types/record"
 import RecordFixForm from "./RecordFixForm"
 
@@ -16,7 +15,7 @@ type Props = {
 	isOpen: boolean
 	onClose: () => void
 }
-const RecordFixModal: NextPage<Props> = (props) => {
+const RecordFixModal: React.FC<Props> = (props) => {
 	return (
 		<>
 			<Modal size="xl" isOpen={props.isOpen} onClose={props.onClose}>

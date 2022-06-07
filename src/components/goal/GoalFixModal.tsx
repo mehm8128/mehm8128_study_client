@@ -7,7 +7,6 @@ import {
 	ModalBody,
 } from "@chakra-ui/react"
 
-import type { NextPage } from "next"
 import { GoalType } from "../../types/goal"
 import GoalFixForm from "./GoalFixForm"
 
@@ -16,7 +15,7 @@ type Props = {
 	isOpen: boolean
 	onClose: () => void
 }
-const GoalFixModal: NextPage<Props> = (props) => {
+const GoalFixModal: React.FC<Props> = (props) => {
 	return (
 		<>
 			<Modal size="xl" isOpen={props.isOpen} onClose={props.onClose}>

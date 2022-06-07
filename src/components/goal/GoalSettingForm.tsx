@@ -1,12 +1,4 @@
-import {
-	Box,
-	Button,
-	Flex,
-	FormControl,
-	Input,
-	Text,
-	Textarea,
-} from "@chakra-ui/react"
+import { Box, Button, Flex, Input, Text, Textarea } from "@chakra-ui/react"
 import axios from "axios"
 import { useContext, useState } from "react"
 

@@ -8,13 +8,12 @@ import {
 	Textarea,
 } from "@chakra-ui/react"
 import axios from "axios"
-import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 
 import { UserContext } from "../UserProvider"
 
-const SignUp: NextPage = () => {
+const SignUp: React.FC = () => {
 	const router = useRouter()
 	const { login } = useContext(UserContext)
 	const [userName, setUserName] = useState("")

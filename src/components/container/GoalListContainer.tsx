@@ -1,10 +1,9 @@
 import { Flex, Box, Heading } from "@chakra-ui/react"
 
-import type { NextPage } from "next"
 import GoalList from "../goal/GoalList"
 import GoalSettingForm from "../goal/GoalSettingForm"
 
-const GoalListContainer: NextPage = () => {
+const GoalListContainer: React.FC = () => {
 	return (
 		<>
 			<Flex

@@ -1,14 +1,5 @@
-import {
-	Box,
-	Button,
-	Flex,
-	FormControl,
-	Input,
-	Text,
-	Textarea,
-} from "@chakra-ui/react"
+import { Box, Button, Flex, Input, Text, Textarea } from "@chakra-ui/react"
 import axios from "axios"
-import type { NextPage } from "next"
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "src/components/UserProvider"
 
@@ -21,7 +12,7 @@ type Props = {
 	onClose: () => void
 }
 
-const RecordForm: NextPage<Props> = ({
+const RecordForm: React.FC<Props> = ({
 	defaultTitle,
 	defaultPage,
 	defaultTime,

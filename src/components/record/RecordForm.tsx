@@ -1,18 +1,9 @@
-import {
-	Box,
-	Button,
-	Flex,
-	FormControl,
-	Input,
-	Text,
-	Textarea,
-} from "@chakra-ui/react"
+import { Box, Button, Flex, Input, Text, Textarea } from "@chakra-ui/react"
 import axios from "axios"
-import type { NextPage } from "next"
 import { useContext, useState } from "react"
 import { UserContext } from "src/components/UserProvider"
 
-const RecordForm: NextPage = () => {
+const RecordForm: React.FC = () => {
 	const { me, getRecords } = useContext(UserContext)
 	const [title, setTitle] = useState("")
 	const [page, setPage] = useState("")
