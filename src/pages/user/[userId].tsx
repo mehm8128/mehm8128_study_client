@@ -12,10 +12,7 @@ import { User } from "src/types/user"
 const User: NextPage = () => {
 	const { me, getUsers } = useContext(UserContext)
 	const router = useRouter()
-	const id =
-		router.query.userId!.toString() !== "me"
-			? router.query.userId!.toString()
-			: me.id
+	const id = router.query.userId !== "me" ? router.query.userId : me.id
 	if (router.isReady) {
 		if (!me.auth) router.replace("/login")
 	}
@@ -41,13 +38,23 @@ const User: NextPage = () => {
 						<Heading mb={4} textAlign="center">
 							勉強の記録
 						</Heading>
-						<TimeLine h="full" overflowY="scroll" p={2} userid={id} />
+						<TimeLine
+							h="full"
+							overflowY="scroll"
+							p={2}
+							userid={id && id.toString()}
+						/>
 					</Box>
 					<Box h={500} width="50%">
 						<Heading mb={4} textAlign="center">
 							目標
 						</Heading>
-						<GoalList h="full" overflowY="scroll" p={2} userid={id} />
+						<GoalList
+							h="full"
+							overflowY="scroll"
+							p={2}
+							userid={id && id.toString()}
+						/>
 					</Box>
 				</Flex>
 			</Box>
