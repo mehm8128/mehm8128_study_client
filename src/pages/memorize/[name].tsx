@@ -8,7 +8,7 @@ import { getRandomInt } from "src/utils/getRandomInt"
 
 const Memorize: NextPage = () => {
 	const router = useRouter()
-	const name = router.query.name as string
+	const name = router.query.name!.toString()
 	const [data, setData] = useState<MemorizeType>(memorizeData)
 	const [questionWord, setQuestionWord] = useState<WordType>()
 	const [choices, setChoices] = useState<WordType[]>()

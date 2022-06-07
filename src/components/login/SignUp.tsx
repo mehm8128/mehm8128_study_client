@@ -22,32 +22,33 @@ const SignUp: NextPage = () => {
 	const [passwordConfirm, setPasswordConfirm] = useState("")
 	const [description, setDescription] = useState("")
 
-	function handleRegister() {
+	function handleRegister(e: any) {
+		e.preventDefault()
 		if (
-			password === passwordConfirm &&
-			userName.length > 0 &&
-			password.length > 0
+			password !== passwordConfirm ||
+			userName.length === 0 ||
+			password.length === 0
 		) {
-			axios
-				.post(process.env.NEXT_PUBLIC_URL + "/api/users/signup", {
-					name: userName,
-					password: password,
-					description: description,
-				})
-				.then((res) => {
-					login({
-						id: res.data.id,
-						name: res.data.name,
-						auth: true,
-					})
-					router.push("/")
-				})
-				.catch((err) => alert(err))
-		} else {
 			alert(
 				"ユーザー名とパスワードは1文字以上必要です。パスワードを確認用パスワードが一致していない可能性があります。"
 			)
+			return
 		}
+		axios
+			.post(process.env.NEXT_PUBLIC_URL + "/api/users/signup", {
+				name: userName,
+				password: password,
+				description: description,
+			})
+			.then((res) => {
+				login({
+					id: res.data.id,
+					name: res.data.name,
+					auth: true,
+				})
+				router.push("/")
+			})
+			.catch((err) => alert(err))
 	}
 
 	return (
@@ -61,7 +62,7 @@ const SignUp: NextPage = () => {
 				<Heading textAlign="center" mt={2}>
 					新規登録
 				</Heading>
-				<FormControl h="90%">
+				<Box as="form" h="90%" onSubmit={handleRegister}>
 					<Flex flexDirection="column" justifyContent="space-around" h="100%">
 						<Input
 							placeholder="ユーザー名"
@@ -85,9 +86,9 @@ const SignUp: NextPage = () => {
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
-						<Button onClick={handleRegister}>登録</Button>
+						<Button type="submit">登録</Button>
 					</Flex>
-				</FormControl>
+				</Box>
 			</Box>
 		</>
 	)

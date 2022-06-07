@@ -33,7 +33,6 @@ const Login: NextPage = () => {
 				router.push("/")
 			})
 			.catch((err) => alert(err))
-		return false
 	}
 	return (
 		<>

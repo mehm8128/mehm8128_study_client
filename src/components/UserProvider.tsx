@@ -1,8 +1,8 @@
-import axios from 'axios'
-import { createContext, useState } from 'react'
-import { GoalType } from 'src/types/goal'
-import { RecordType } from 'src/types/record'
-import { Me, User } from 'src/types/user'
+import axios from "axios"
+import { createContext, useState } from "react"
+import { GoalType } from "src/types/goal"
+import { RecordType } from "src/types/record"
+import { Me, User } from "src/types/user"
 
 type UserContextType = {
 	me: Me
@@ -18,11 +18,11 @@ type UserContextType = {
 export const UserContext = createContext<UserContextType>({} as UserContextType)
 
 export const UserProvider: React.FC = ({ children }) => {
-	const [me, setMe] = useState({
+	const [me, setMe] = useState<Me>({
 		id: "",
 		name: "",
 		auth: false,
-	} as Me)
+	})
 	const [records, setRecords] = useState<RecordType[]>(new Array<RecordType>())
 	const [goals, setGoals] = useState<GoalType[]>(new Array<GoalType>())
 	const [users, setUsers] = useState<User[]>(new Array<User>())
