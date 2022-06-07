@@ -1,9 +1,8 @@
 import { Box, Button, Heading, List, ListItem, Text } from "@chakra-ui/react"
 import axios from "axios"
 import type { NextPage } from "next"
-import router, { useRouter } from "next/router"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { memorizeData } from "src/mock/memorize"
 import { MemorizeType, WordType } from "src/types/memorize"
 import { getRandomInt } from "src/utils/getRandomInt"
 
@@ -12,7 +11,7 @@ type Judge = 0 | 1 | 2 //0：まだ、1:正解、2:不正解
 const Memorize: NextPage = () => {
 	const router = useRouter()
 	const id = router.query.memorizeId
-	const [data, setData] = useState<MemorizeType>(memorizeData)
+	const [data, setData] = useState<MemorizeType>()
 	const [questionWords, setQuestionWords] = useState<WordType[]>()
 	const [choices, setChoices] = useState<WordType[]>()
 	const [count, setCount] = useState(0)
@@ -71,7 +70,7 @@ const Memorize: NextPage = () => {
 		<>
 			<Box p="8">
 				<Heading as="h1" size="lg" pb="8">
-					{data.name}
+					{data && data.name}
 				</Heading>
 				<Box w={{ base: "", md: "20%" }}>
 					{questionWords && questionWords![count] ? (
