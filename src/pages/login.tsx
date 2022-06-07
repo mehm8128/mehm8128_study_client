@@ -7,15 +7,15 @@ import SignUp from "../components/login/SignUp"
 const LoginPage: NextPage = () => {
 	return (
 		<>
-			<Heading textAlign="center" mt={4}>
+			<Heading mt={4} textAlign="center">
 				タイトル
 			</Heading>
 			<Flex
-				justifyContent="space-around"
+				direction={{ base: "column", md: "row" }}
 				h={500}
+				justifyContent="space-around"
 				mt={12}
 				mx={4}
-				direction={{ base: "column", md: "row" }}
 			>
 				<Login />
 				<SignUp />

@@ -9,7 +9,7 @@ type Props = {
 
 const LinkComponent: React.FC<Props> = (props) => {
 	return (
-		<NextLink href={props.href} passHref>
+		<NextLink passHref href={props.href}>
 			<Link>{props.children}</Link>
 		</NextLink>
 	)

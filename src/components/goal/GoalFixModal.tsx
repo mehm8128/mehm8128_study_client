@@ -18,18 +18,18 @@ type Props = {
 const GoalFixModal: React.FC<Props> = (props) => {
 	return (
 		<>
-			<Modal size="xl" isOpen={props.isOpen} onClose={props.onClose}>
+			<Modal isOpen={props.isOpen} size="xl" onClose={props.onClose}>
 				<ModalOverlay />
 				<ModalContent h="60%">
 					<ModalHeader>目標の編集</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<GoalFixForm
-							isCompleted={props.goal.isCompleted}
-							defaultTitle={props.goal.title}
-							defaultGoalDate={props.goal.goalDate}
 							defaultComment={props.goal.comment}
+							defaultGoalDate={props.goal.goalDate}
+							defaultTitle={props.goal.title}
 							id={props.goal.id}
+							isCompleted={props.goal.isCompleted}
 							onClose={props.onClose}
 						/>
 					</ModalBody>

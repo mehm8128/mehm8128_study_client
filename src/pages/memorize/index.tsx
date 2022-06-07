@@ -3,8 +3,8 @@ import axios from "axios"
 
 import type { NextPage } from "next"
 import { useState, useEffect } from "react"
-import LinkComponent from "src/components/common/LinkComponent"
 import type { MemorizeType } from "../../types/memorize"
+import LinkComponent from "src/components/common/LinkComponent"
 
 const MemorizePortal: NextPage = () => {
 	const [memorizes, setMemorizes] = useState<MemorizeType[]>()
@@ -22,7 +22,7 @@ const MemorizePortal: NextPage = () => {
 			<UnorderedList p="12">
 				{memorizes &&
 					memorizes.map((memorize) => (
-						<ListItem mb="4" key={memorize.id}>
+						<ListItem key={memorize.id} mb="4">
 							<LinkComponent href={`/memorize/${memorize.id}`}>
 								{memorize.name}の暗記へ
 							</LinkComponent>

@@ -1,10 +1,10 @@
+import { Avatar, Box, Center, Flex, Text } from "@chakra-ui/react"
 import { useContext } from "react"
 import { UserContext } from "src/components/UserProvider"
 import { User } from "src/types/user"
 import { createdByToString } from "src/utils/createdByToString"
 import { minutesToHoursAndMinutes } from "src/utils/minutesToHoursAndMinutes"
 
-import { Avatar, Box, Center, Flex, Text } from "@chakra-ui/react"
 
 type Props = {
 	user: User
@@ -19,11 +19,11 @@ const UserIntro: React.FC<Props> = (props) => {
 			<Box p={4}>
 				<Flex>
 					<Center>
-						<Avatar name={props.user.name} src={""} mr={2}></Avatar>
+						<Avatar mr={2} name={props.user.name} src={""}></Avatar>
 						<Text fontSize={20}>{createdByToString(props.user.id, users)}</Text>
 					</Center>
 				</Flex>
-				<Box height={20} py={4} px={4}>
+				<Box height={20} px={4} py={4}>
 					<Text>総勉強時間：{minutesToHoursAndMinutes(fullStudyTime)}</Text>
 					<Text whiteSpace="pre-wrap">{props.user.description}</Text>
 				</Box>

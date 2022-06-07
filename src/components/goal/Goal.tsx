@@ -66,9 +66,9 @@ const Goal: React.FC<Props> = (props) => {
 					<LinkComponent href={"/user/" + props.goal.createdBy}>
 						<Center>
 							<Avatar
+								mr={2}
 								name={createdByToString(props.goal.createdBy, users)}
 								src={""}
-								mr={2}
 							></Avatar>
 							<Text fontSize={20}>
 								{createdByToString(props.goal.createdBy, users)}
@@ -81,11 +81,11 @@ const Goal: React.FC<Props> = (props) => {
 							<>
 								<Menu>
 									<MenuButton
-										w={12}
-										h={12}
-										borderRadius="50%"
-										opacity="50%"
 										_hover={{ backgroundColor: "gray.200" }}
+										borderRadius="50%"
+										h={12}
+										opacity="50%"
+										w={12}
 									>
 										<Center>
 											<Text fontSize={12} fontWeight="bold">
@@ -104,7 +104,7 @@ const Goal: React.FC<Props> = (props) => {
 						) : null}
 					</Flex>
 				</Flex>
-				<Box ml={12} mb={4}>
+				<Box mb={4} ml={12}>
 					<Text>目標を設定しました！</Text>
 					<Text>{props.goal.title}</Text>
 					<Text>期限：{props.goal.goalDate}</Text>

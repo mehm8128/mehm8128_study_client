@@ -57,9 +57,9 @@ const Record: React.FC<Props> = (props) => {
 					<LinkComponent href={"/user/" + props.record.createdBy}>
 						<Center>
 							<Avatar
+								mr={2}
 								name={createdByToString(props.record.createdBy, users)}
 								src={""}
-								mr={2}
 							></Avatar>
 							<Text fontSize={20}>
 								{createdByToString(props.record.createdBy, users)}
@@ -73,11 +73,11 @@ const Record: React.FC<Props> = (props) => {
 								<>
 									<Menu>
 										<MenuButton
-											w={12}
-											h={12}
-											borderRadius="50%"
-											opacity="50%"
 											_hover={{ backgroundColor: "gray.200" }}
+											borderRadius="50%"
+											h={12}
+											opacity="50%"
+											w={12}
 										>
 											<Center>
 												<Text fontSize={12} fontWeight="bold">
@@ -97,7 +97,7 @@ const Record: React.FC<Props> = (props) => {
 						</Flex>
 					</Flex>
 				</Flex>
-				<Box ml={12} mb={4}>
+				<Box mb={4} ml={12}>
 					<Text>{props.record.title}</Text>
 					<Text>
 						{props.record.time ? props.record.time + "分、" : ""}
@@ -112,7 +112,7 @@ const Record: React.FC<Props> = (props) => {
 					</Button>
 				</Center>
 			</Box>
-			<RecordFixModal record={props.record} isOpen={isOpen} onClose={onClose} />
+			<RecordFixModal isOpen={isOpen} record={props.record} onClose={onClose} />
 		</>
 	)
 }

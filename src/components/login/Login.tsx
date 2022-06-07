@@ -29,16 +29,16 @@ const Login: React.FC = () => {
 	return (
 		<>
 			<Box
-				borderWidth={4}
 				borderColor="gray.200"
+				borderWidth={4}
 				h="70%"
 				w={{ base: "100%", md: "40%" }}
 			>
-				<Heading textAlign="center" mt={2}>
+				<Heading mt={2} textAlign="center">
 					ログイン
 				</Heading>
 				<Box as="form" h="80%" onSubmit={handleLogin}>
-					<Flex flexDirection="column" justifyContent="space-around" h="100%">
+					<Flex flexDirection="column" h="100%" justifyContent="space-around">
 						<Input
 							placeholder="ユーザー名"
 							value={userName}

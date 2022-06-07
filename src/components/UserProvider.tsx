@@ -34,7 +34,7 @@ export const UserProvider: React.FC = ({ children }) => {
 		setMe({ id: "", name: "", auth: false })
 	}
 	const getRecords = async (id?: string) => {
-		let userId = id ? "/user/" + id : ""
+		const userId = id ? "/user/" + id : ""
 		await axios
 			.get(process.env.NEXT_PUBLIC_URL + "/api/records" + userId)
 			.then((res) => {
@@ -42,7 +42,7 @@ export const UserProvider: React.FC = ({ children }) => {
 			})
 	}
 	const getGoals = async (id?: string) => {
-		let userId = id ? "/user/" + id : ""
+		const userId = id ? "/user/" + id : ""
 		await axios
 			.get(process.env.NEXT_PUBLIC_URL + "/api/goals" + userId)
 			.then((res) => {

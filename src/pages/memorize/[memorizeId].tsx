@@ -69,7 +69,7 @@ const Memorize: NextPage = () => {
 	return (
 		<>
 			<Box p="8">
-				<Heading as="h1" size="lg" pb="8">
+				<Heading as="h1" pb="8" size="lg">
 					{data && data.name}
 				</Heading>
 				<Box w={{ base: "", md: "20%" }}>

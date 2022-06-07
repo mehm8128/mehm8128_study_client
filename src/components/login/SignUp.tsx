@@ -2,7 +2,6 @@ import {
 	Box,
 	Button,
 	Flex,
-	FormControl,
 	Heading,
 	Input,
 	Textarea,
@@ -53,16 +52,16 @@ const SignUp: React.FC = () => {
 	return (
 		<>
 			<Box
-				borderWidth={4}
 				borderColor="gray.200"
-				w={{ base: "100%", md: "40%" }}
+				borderWidth={4}
 				mb={{ base: 12 }}
+				w={{ base: "100%", md: "40%" }}
 			>
-				<Heading textAlign="center" mt={2}>
+				<Heading mt={2} textAlign="center">
 					新規登録
 				</Heading>
 				<Box as="form" h="90%" onSubmit={handleRegister}>
-					<Flex flexDirection="column" justifyContent="space-around" h="100%">
+					<Flex flexDirection="column" h="100%" justifyContent="space-around">
 						<Input
 							placeholder="ユーザー名"
 							value={userName}
@@ -79,9 +78,9 @@ const SignUp: React.FC = () => {
 							onChange={(e) => setPasswordConfirm(e.target.value)}
 						/>
 						<Textarea
+							h={32}
 							placeholder="自己紹介"
 							resize="none"
-							h={32}
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>

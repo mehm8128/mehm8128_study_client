@@ -18,17 +18,17 @@ type Props = {
 const RecordFixModal: React.FC<Props> = (props) => {
 	return (
 		<>
-			<Modal size="xl" isOpen={props.isOpen} onClose={props.onClose}>
+			<Modal isOpen={props.isOpen} size="xl" onClose={props.onClose}>
 				<ModalOverlay />
 				<ModalContent h="70%">
 					<ModalHeader>目標の編集</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<RecordFixForm
-							defaultTitle={props.record.title}
+							defaultComment={props.record.comment}
 							defaultPage={props.record.page.toString()}
 							defaultTime={props.record.time.toString()}
-							defaultComment={props.record.comment}
+							defaultTitle={props.record.title}
 							id={props.record.id}
 							onClose={props.onClose}
 						/>

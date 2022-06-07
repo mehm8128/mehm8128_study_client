@@ -9,7 +9,6 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended"
 	],
-	"parser": "@typescript-eslint/parser",
 	"plugins": ["unused-imports", "import"],
 	"parserOptions": {
 		"ecmaFeatures": {

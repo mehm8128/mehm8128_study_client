@@ -7,11 +7,11 @@ const TimeLineContainer: React.FC = () => {
 	return (
 		<>
 			<Flex
-				justifyContent="space-around"
 				direction={{ base: "column-reverse", md: "row" }}
+				justifyContent="space-around"
 			>
 				<TimeLine w={{ base: "100%", md: "60%" }} />
-				<Box w={{ base: "100%", md: "30%" }} borderWidth={2} p={8} h={580}>
+				<Box borderWidth={2} h={580} p={8} w={{ base: "100%", md: "30%" }}>
 					<Heading>勉強の記録</Heading>
 					<RecordForm />
 				</Box>

@@ -13,16 +13,16 @@ const Header: React.FC = () => {
 	return (
 		<>
 			<Flex
-				justifyContent="space-between"
+				alignItems="center"
 				bg="gray.200"
 				height="16"
-				alignItems="center"
+				justifyContent="space-between"
 				px="4"
 			>
 				<Heading>
 					<LinkComponent href="/">タイトル</LinkComponent>
 				</Heading>
-				<Flex justifyContent="space-around" gap="4">
+				<Flex gap="4" justifyContent="space-around">
 					<LinkComponent href="/memorize">
 						<Button bg="gray.400">単語暗記へ</Button>
 					</LinkComponent>

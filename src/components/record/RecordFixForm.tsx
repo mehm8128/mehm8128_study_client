@@ -59,7 +59,7 @@ const RecordForm: React.FC<Props> = ({
 
 	return (
 		<Box as="form" h="100%" onSubmit={handleSubmit}>
-			<Flex flexDirection="column" justifyContent="space-around" h="80%">
+			<Flex flexDirection="column" h="80%" justifyContent="space-around">
 				<Text>タイトル</Text>
 				<Input
 					placeholder="必須項目"
@@ -81,15 +81,15 @@ const RecordForm: React.FC<Props> = ({
 				<Text>コメント</Text>
 				<Textarea
 					placeholder="任意"
+					resize="none"
 					value={comment}
 					onChange={(e) => setComment(e.target.value)}
-					resize="none"
 				/>
 				<Flex justifyContent="space-around" mt={4}>
-					<Button colorScheme="blue" w={32} type="submit">
+					<Button colorScheme="blue" type="submit" w={32}>
 						決定
 					</Button>
-					<Button onClick={onClose} w={32}>
+					<Button w={32} onClick={onClose}>
 						戻る
 					</Button>
 				</Flex>

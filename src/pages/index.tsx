@@ -18,10 +18,10 @@ const Index: NextPage = () => {
 		<>
 			<Tabs mt="8">
 				<TabList justifyContent="center">
-					<Tab w="40%" fontSize={20}>
+					<Tab fontSize={20} w="40%">
 						タイムライン
 					</Tab>
-					<Tab w="40%" fontSize={20}>
+					<Tab fontSize={20} w="40%">
 						みんなの目標
 					</Tab>
 				</TabList>

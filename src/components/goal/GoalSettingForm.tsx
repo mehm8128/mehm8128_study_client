@@ -35,7 +35,7 @@ const GoalSettingForm: React.FC = () => {
 
 	return (
 		<Box as="form" h="100%" onSubmit={handleSubmit}>
-			<Flex flexDirection="column" justifyContent="space-around" h="80%">
+			<Flex flexDirection="column" h="80%" justifyContent="space-around">
 				<Text>タイトル</Text>
 				<Input
 					placeholder="必須項目"
@@ -51,9 +51,9 @@ const GoalSettingForm: React.FC = () => {
 				<Text>コメント</Text>
 				<Textarea
 					placeholder="任意"
+					resize="none"
 					value={comment}
 					onChange={(e) => setComment(e.target.value)}
-					resize="none"
 				/>
 				<Button type="submit">目標を設定</Button>
 			</Flex>

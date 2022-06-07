@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Heading, Input, Select } from "@chakra-ui/react"
 import axios from "axios"
-import type { MemorizeType } from "../../types/memorize"
 import type { NextPage } from "next"
 import { useEffect, useState } from "react"
+import type { MemorizeType } from "../../types/memorize"
 
 const Admin: NextPage = () => {
 	const [newWord, setNewWord] = useState<string>("")
@@ -43,7 +43,7 @@ const Admin: NextPage = () => {
 	return (
 		<>
 			<Box p="4" w={{ base: "", md: "20%" }}>
-				<Heading as="h1" size="lg" pb="2" px="2">
+				<Heading as="h1" pb="2" px="2" size="lg">
 					新しい単語を追加
 				</Heading>
 				<Box as="form" onSubmit={handleRegister}>
@@ -55,20 +55,20 @@ const Admin: NextPage = () => {
 						>
 							{memorizes !== undefined
 								? memorizes.map((memorize) => (
-										<option value={memorize.id} key={memorize.id}>
+										<option key={memorize.id} value={memorize.id}>
 											{memorize.name}
 										</option>
 								  ))
 								: null}
 						</Select>
 						<Input
-							value={newWord}
 							placeholder="追加する単語(英語)"
+							value={newWord}
 							onChange={(e) => setNewWord(e.target.value)}
 						/>
 						<Input
-							value={newWordJp}
 							placeholder="追加する単語(日本語)"
+							value={newWordJp}
 							onChange={(e) => setNewWordJp(e.target.value)}
 						/>
 						<Button type="submit">追加</Button>

@@ -7,11 +7,11 @@ const GoalListContainer: React.FC = () => {
 	return (
 		<>
 			<Flex
-				justifyContent="space-around"
 				direction={{ base: "column-reverse", md: "row" }}
+				justifyContent="space-around"
 			>
 				<GoalList w={{ base: "100%", md: "60%" }} />
-				<Box w={{ base: "100%", md: "30%" }} borderWidth={2} p={8} h={500}>
+				<Box borderWidth={2} h={500} p={8} w={{ base: "100%", md: "30%" }}>
 					<Heading>目標の設定</Heading>
 					<GoalSettingForm />
 				</Box>

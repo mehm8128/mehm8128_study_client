@@ -37,17 +37,17 @@ const User: NextPage = () => {
 			<Box h="hull">
 				{user !== undefined ? <UserIntro user={user} /> : null}
 				<Flex>
-					<Box width="50%" h={500}>
-						<Heading textAlign="center" mb={4}>
+					<Box h={500} width="50%">
+						<Heading mb={4} textAlign="center">
 							勉強の記録
 						</Heading>
-						<TimeLine overflowY="scroll" h="full" p={2} userid={id} />
+						<TimeLine h="full" overflowY="scroll" p={2} userid={id} />
 					</Box>
-					<Box width="50%" h={500}>
-						<Heading textAlign="center" mb={4}>
+					<Box h={500} width="50%">
+						<Heading mb={4} textAlign="center">
 							目標
 						</Heading>
-						<GoalList overflowY="scroll" h="full" p={2} userid={id} />
+						<GoalList h="full" overflowY="scroll" p={2} userid={id} />
 					</Box>
 				</Flex>
 			</Box>
