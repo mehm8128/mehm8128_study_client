@@ -9,7 +9,7 @@ import {
 
 import type { NextPage } from "next"
 import { GoalType } from "../../types/goal"
-import GoalSettingForm from "./GoalSettingForm"
+import GoalFixForm from "./GoalFixForm"
 
 type Props = {
 	goal: GoalType
@@ -25,8 +25,7 @@ const GoalFixModal: NextPage<Props> = (props) => {
 					<ModalHeader>目標の編集</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<GoalSettingForm
-							type="put"
+						<GoalFixForm
 							isCompleted={props.goal.isCompleted}
 							defaultTitle={props.goal.title}
 							defaultGoalDate={props.goal.goalDate}

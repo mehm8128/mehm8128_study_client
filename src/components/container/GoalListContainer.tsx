@@ -14,7 +14,7 @@ const GoalListContainer: NextPage = () => {
 				<GoalList w={{ base: "100%", md: "60%" }} />
 				<Box w={{ base: "100%", md: "30%" }} borderWidth={2} p={8} h={500}>
 					<Heading>目標の設定</Heading>
-					<GoalSettingForm type="post" isCompleted={false} />
+					<GoalSettingForm />
 				</Box>
 			</Flex>
 		</>

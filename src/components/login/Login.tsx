@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Heading, Input } from "@chakra-ui/react"
+import {
+	Box,
+	Button,
+	Flex,
+	FormControl,
+	Heading,
+	Input,
+} from "@chakra-ui/react"
 import axios from "axios"
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
@@ -10,7 +17,8 @@ const Login: NextPage = () => {
 	const { login } = useContext(UserContext)
 	const [userName, setUserName] = useState("")
 	const [password, setPassword] = useState("")
-	function handleLogin() {
+	function handleLogin(e: any) {
+		e.preventDefault()
 		axios
 			.post(process.env.NEXT_PUBLIC_URL + "/api/users/login", {
 				name: userName,
@@ -25,6 +33,7 @@ const Login: NextPage = () => {
 				router.push("/")
 			})
 			.catch((err) => alert(err))
+		return false
 	}
 	return (
 		<>
@@ -37,19 +46,21 @@ const Login: NextPage = () => {
 				<Heading textAlign="center" mt={2}>
 					ログイン
 				</Heading>
-				<Flex flexDirection="column" justifyContent="space-around" h="80%">
-					<Input
-						placeholder="ユーザー名"
-						value={userName}
-						onChange={(e) => setUserName(e.target.value)}
-					></Input>
-					<Input
-						placeholder="パスワード"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					></Input>
-					<Button onClick={handleLogin}>ログイン</Button>
-				</Flex>
+				<Box as="form" h="80%" onSubmit={handleLogin}>
+					<Flex flexDirection="column" justifyContent="space-around" h="100%">
+						<Input
+							placeholder="ユーザー名"
+							value={userName}
+							onChange={(e) => setUserName(e.target.value)}
+						/>
+						<Input
+							placeholder="パスワード"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<Button type="submit">ログイン</Button>
+					</Flex>
+				</Box>
 			</Box>
 		</>
 	)

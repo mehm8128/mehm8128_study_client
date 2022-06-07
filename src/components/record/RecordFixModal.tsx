@@ -9,7 +9,7 @@ import {
 
 import type { NextPage } from "next"
 import { RecordType } from "../../types/record"
-import RecordForm from "./RecordForm"
+import RecordFixForm from "./RecordFixForm"
 
 type Props = {
 	record: RecordType
@@ -25,8 +25,7 @@ const RecordFixModal: NextPage<Props> = (props) => {
 					<ModalHeader>目標の編集</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<RecordForm
-							type="put"
+						<RecordFixForm
 							defaultTitle={props.record.title}
 							defaultPage={props.record.page.toString()}
 							defaultTime={props.record.time.toString()}

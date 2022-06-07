@@ -14,7 +14,7 @@ const TimeLineContainer: NextPage = () => {
 				<TimeLine w={{ base: "100%", md: "60%" }} />
 				<Box w={{ base: "100%", md: "30%" }} borderWidth={2} p={8} h={580}>
 					<Heading>勉強の記録</Heading>
-					<RecordForm type="post" />
+					<RecordForm />
 				</Box>
 			</Flex>
 		</>

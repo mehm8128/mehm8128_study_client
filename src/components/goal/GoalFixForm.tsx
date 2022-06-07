@@ -1,0 +1,104 @@
+import {
+	Box,
+	Button,
+	Flex,
+	FormControl,
+	Input,
+	Text,
+	Textarea,
+} from "@chakra-ui/react"
+import axios from "axios"
+import type { NextPage } from "next"
+import { useContext, useEffect, useState } from "react"
+
+import { UserContext } from "../UserProvider"
+
+type Props = {
+	isCompleted: boolean
+	defaultTitle: string
+	defaultGoalDate: string
+	defaultComment: string
+	id: string
+	onClose: () => void
+}
+
+const GoalFixForm: NextPage<Props> = ({
+	isCompleted,
+	defaultTitle,
+	defaultGoalDate,
+	defaultComment,
+	id,
+	onClose,
+}) => {
+	const { me, getGoals } = useContext(UserContext)
+	const [title, setTitle] = useState("")
+	const [goalDate, setGoalDate] = useState("")
+	const [comment, setComment] = useState("")
+	useEffect(() => {
+		setTitle(defaultTitle)
+		setGoalDate(defaultGoalDate)
+		setComment(defaultComment)
+	}, [defaultTitle, defaultGoalDate, defaultComment]) //propsからuseStateに入れるときはこれしないといけないみたいなやつ
+
+	function handleSubmit(e: any) {
+		e.preventDefault()
+		if (title === "" || !/^2[0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(goalDate)) {
+			alert("タイトルは必須です。期限はyyyy-mm-ddの形式で入力してください。")
+			return
+		}
+		axios
+			.put(process.env.NEXT_PUBLIC_URL + "/api/goals/" + id, {
+				title: title,
+				goalDate: goalDate,
+				comment: comment,
+				isCompleted: isCompleted,
+				createdBy: me.id,
+			})
+			.then(() => {
+				getGoals()
+				setTitle("")
+				setGoalDate("")
+				setComment("")
+				onClose()
+			})
+			.catch((err) => alert(err))
+	}
+
+	return (
+		<>
+			<Box as="form" h="100%" onSubmit={handleSubmit}>
+				<Flex flexDirection="column" justifyContent="space-around" h="80%">
+					<Text>タイトル</Text>
+					<Input
+						placeholder="必須項目"
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
+					/>
+					<Text>期限</Text>
+					<Input
+						placeholder="YYYY-MM-DD"
+						value={goalDate}
+						onChange={(e) => setGoalDate(e.target.value)}
+					/>
+					<Text>コメント</Text>
+					<Textarea
+						placeholder="任意"
+						value={comment}
+						onChange={(e) => setComment(e.target.value)}
+						resize="none"
+					/>
+					<Flex justifyContent="space-around" mt={4}>
+						<Button colorScheme="blue" w={32} type="submit">
+							決定
+						</Button>
+						<Button onClick={onClose} w={32}>
+							戻る
+						</Button>
+					</Flex>
+				</Flex>
+			</Box>
+		</>
+	)
+}
+
+export default GoalFixForm
